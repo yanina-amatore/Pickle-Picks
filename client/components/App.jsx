@@ -37,6 +37,8 @@ function App() {
           />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          {/* <Route path="/reviewlist" element={<ReviewList />} /> */}
+
         </Routes>
       </div>
     </div>
