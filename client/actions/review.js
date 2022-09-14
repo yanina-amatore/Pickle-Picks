@@ -1,13 +1,13 @@
 import { getReviewsApi } from "../apis/review";
 
-export const SHOW_REVIEW = 'SHOW_REVIEW' 
+export const RECEIVE_REVIEW = 'RECEIVE_REVIEW' 
 
 
 // action show
-export function showReview(data) {
+export function showReview(reviews) {
   return{
-    type:SHOW_REVIEW,
-    payload: data
+    type:RECEIVE_REVIEW,
+    payload: reviews
   }
 }
 
