@@ -17,6 +17,21 @@ const fakeUserData = [
     password: 'ADMIN',
     email_address: 'pickle@devacademy.co.nz',
   },
+  {
+    username: 'ming',
+    password: '123qwe',
+    email_address: 'mingshang@live.com',
+  },
+  {
+    username: 'ryan',
+    password: 'abc123',
+    email_address: 'ryan@devacademy.co.nz',
+  },
+  {
+    username: 'arnold',
+    password: 'hey',
+    email_address: 'coconut@head.com',
+  },
 ]
 
 const fakeUsers = Promise.all(fakeUserData.map(replacePasswordWithHash))
