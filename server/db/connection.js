@@ -1,6 +1,13 @@
 const knex = require('knex')
 const config = require('./knexfile')
 const env = process.env.NODE_ENV || 'development'
-const connection = knex(config[env])
+const conn = knex(config[env])
 
-module.exports = connection
+function getReviews(db = conn) {
+  return db('reviews').select()
+}
+function getSavedReviews(userId, db = conn) {
+  return db('saved_reviews').select('review_id').where('user_id', userId)
+}
+
+module.exports = { getReviews, getSavedReviews }
