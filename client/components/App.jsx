@@ -33,7 +33,8 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={auth.isAuthenticated ? <Home /> : <Login />}
+            // element={auth.isAuthenticated ? <Home /> : <Login />}
+            element = { <Home/>}
           />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

@@ -1,7 +1,7 @@
 const initialState = {
   isFetching: false,
   isAuthenticated: false,
-  user: {},
+  user: null,
   errorMessage: '',
 }
 
