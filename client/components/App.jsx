@@ -38,6 +38,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           {/* <Route path="/reviewlist" element={<ReviewList />} /> */}
+          <Route path="/review" element={<Review />} />
 
         </Routes>
       </div>
