@@ -1,7 +1,10 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+
 
 function Home() {
-  return <h2>Welcome!</h2>
+  const state = useSelector((redux)=> redux)
+  return <h2>Welcome {state.auth.user ? state.auth.user.username+'!' : 'Friend!'} </h2>
 }
 
 export default Home
