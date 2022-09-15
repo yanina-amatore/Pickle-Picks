@@ -39,20 +39,10 @@ function App() {
 
       <div className="">
         <Routes>
-          <Route
-            path="/"
-            element = { <Home/>}
-          />
-
-
+          <Route path="/" element = { <Home/>}/>          
           {auth.user?.id === 1 &&
-           <Route path="/reviews/addreview" element ={<AddReviewForm />} />
-           
-           } 
-
-          
-        
-          
+            <Route path="/reviews/addreview" element ={<AddReviewForm />} />
+          } 
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/reviewlist" element={<ReviewList />} />
