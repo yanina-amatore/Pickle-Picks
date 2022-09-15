@@ -3,9 +3,9 @@ import request from 'superagent'
 
 // Get Review Data 
 export function getReviewsApi() {
-  return request.get('/api/reviews')
+  return request.get('/api/v1/reviews')
     .then((resp) => {
-      console.log(resp.body)
+      console.log('in api', resp.body)
       return resp.body
     })
 }

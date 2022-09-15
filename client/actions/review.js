@@ -16,6 +16,7 @@ export function fetchReview() {
   return(dispatch) => {
     return getReviewsApi()
     .then((data) => {
+      console.log('In thunk',data)
       dispatch(showReview(data))
     }) 
     }
