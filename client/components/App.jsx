@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route, Link, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
 import Login from './Login'
@@ -14,11 +14,16 @@ import { checkAuth } from '../actions/auth'
 function App() {
   const dispatch = useDispatch()
   const auth = useSelector((redux) => redux.auth)
+  const reviews = useSelector((state) => state.reviews)
+
+  // let { id } = useParams();
+  // console.log('id', id)
 
   useEffect(() => {
     const confirmSuccess = () => {}
     dispatch(checkAuth(confirmSuccess))
   }, [])
+
 
   return (
     <div className="container has-text-centered">
@@ -41,7 +46,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/reviewlist" element={<ReviewList />} />
-          <Route path="/review/id" element={<Review />} />
+          <Route path="/review/:id" element={<Review />} />
 
         </Routes>
       </div>
