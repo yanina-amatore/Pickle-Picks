@@ -17,7 +17,13 @@ export async function postWishApi(id) {
   return resp
 }
 
+
+// Post new review from pickles
+
 export async function postNewReviewApi(reviewObj, id){
-  const resp = await request.post('/api/reviews/addreview').send(reviewObj)
-  return resp
+  const resp = await request.post('/api/v1/reviews/addreview').send(reviewObj)
+  return console.log(resp.body)
 }
+
+
+
