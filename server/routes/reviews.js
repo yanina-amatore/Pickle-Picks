@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const db = require('../db/connection')
+const db = require('../db/reviews')
 
 router.get('/', (req, res) => {
   db.getReviews()
