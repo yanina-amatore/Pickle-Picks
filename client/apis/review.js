@@ -1,20 +1,26 @@
 
 import request from 'superagent'
 
-
-// Get Review Data 
+// Get Review Data
 export function getReviewsApi() {
-  return request.get('/api/v1/reviews')
-    .then((resp) => {
-      console.log('in api', resp.body)
-      return resp.body
-    })
+  return request.get('/api/v1/reviews').then((resp) => {
+    console.log('in api', resp.body)
+    return resp.body
+  })
+}
+// Receive save data
+export function getSaved(userId) {
+  return request.get(`/api/v1/reviews/saved/${userId}`).then((resp) => {
+    console.log('in api', resp.body)
+    return resp.body
+  })
 }
 
-// Post picked Data for Wishlist 
-
-export async function postWishApi(id) {
-  const resp = await request.post('/api/reviews/saved').send(id)
+// Post picked Data for Wishlist
+export async function postSaveReview(userId, reviewId) {
+  const resp = await request
+    .post(`/api/v1/reviews/saved/${userId}`)
+    .send({ postId: reviewId })
   return resp
 }
 

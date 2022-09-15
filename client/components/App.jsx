@@ -8,9 +8,12 @@ import Nav from './Nav'
 import Home from './Home'
 import Review from './Review'
 import ReviewList from './ReviewList'
+import SaveList from './SaveList'
 import AddReviewForm from './AddReviewForm'
 
+
 import { checkAuth } from '../actions/auth'
+import { fetchReview } from '../actions/review'
 
 function App() {
   const dispatch = useDispatch()
@@ -23,8 +26,8 @@ function App() {
   useEffect(() => {
     const confirmSuccess = () => {}
     dispatch(checkAuth(confirmSuccess))
+    dispatch(fetchReview())
   }, [])
-
 
   return (
     <div className="container has-text-centered">
@@ -46,8 +49,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/reviewlist" element={<ReviewList />} />
+          <Route path="/savelist/" element={<SaveList reviews={reviews} />} />
           <Route path="/review/:id" element={<Review />} />
-
         </Routes>
       </div>
     </div>

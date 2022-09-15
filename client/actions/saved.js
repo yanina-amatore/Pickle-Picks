@@ -1,22 +1,20 @@
-import { postWishApi } from "../apis/review";
+import { postSaveReview } from '../apis/review'
 
-export const SAVE_REVIEW = 'SAVE_REVIEW' 
-
+export const SAVE_REVIEW = 'SAVE_REVIEW'
 
 // action show
 export function saveReview(id) {
-  return{
-    type:SAVE_REVIEW,
-    payload: id
+  return {
+    type: SAVE_REVIEW,
+    payload: id,
   }
 }
 
 // thunk show
-export function fetchSaveReview(id) {
-  return(dispatch) => {
-    return postWishApi()
-    .then((id) => {
-      dispatch(saveReview(id))
-    }) 
-    }
+export function addReviewToWishlist(userId, reviewId) {
+  return (dispatch) => {
+    return postSaveReview(userId, reviewId).then(() => {
+      dispatch(saveReview(reviewId))
+    })
   }
+}

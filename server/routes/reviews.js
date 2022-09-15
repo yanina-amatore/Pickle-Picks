@@ -23,8 +23,19 @@ router.get('/saved/:userId', (req, res) => {
     })
 })
 
+router.post('/saved/:userId', (req, res) => {
+  const userId = req.params.userId
+  const postId = req.body.postId
+  db.postReview(userId, postId)
+    .then(() => {
+      res.sendStatus(201)
+      // res.json({ status: 'success' })
+    })
+    .catch((err) => {
+      console.log('Error in Server:' + err.message)
+    })
+})
 
-//work in progress//
 router.post('/addreview', (req, res)=> {
   const review =req.body
  
@@ -35,8 +46,6 @@ router.post('/addreview', (req, res)=> {
 
    
 })
-
-/////
 
 
 module.exports = router
