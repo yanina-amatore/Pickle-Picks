@@ -30,7 +30,7 @@ router.post('/addreview', (req, res)=> {
  
   db.addReview(review)
     .then((thing)=>res.json(thing))
-    .then (()=> res.redirect('/'))
+    // .then (()=> res.redirect('/'))
     .catch (err => res.status(500).send(err.message))
 
    

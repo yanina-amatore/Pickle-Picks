@@ -1,3 +1,4 @@
+
 import request from 'superagent'
 
 
@@ -20,9 +21,12 @@ export async function postWishApi(id) {
 
 // Post new review from pickles
 
-export async function postNewReviewApi(reviewObj, id){
+export function postNewReviewApi(reviewObj){
   return request.post('/api/v1/reviews/addreview').send(reviewObj)
-  .then(console.log('hi'))
+  .then((resp) => {
+    
+    return resp.body
+  })
 }
 
 

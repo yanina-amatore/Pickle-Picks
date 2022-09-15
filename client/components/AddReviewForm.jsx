@@ -36,16 +36,16 @@ function AddReviewForm(){
       <h2>Add a Review now, Pickles</h2>
       <form onSubmit= {handleSubmbit}>
         <label htmlFor="location">location</label>
-        <input type="text" id="location" onChange={handleChange}/>
+        <input name="location" type="text" id="location" onChange={handleChange}/>
         <br/>
         <label htmlFor="title">title</label>
-        <input type="text" id="title" onChange={handleChange}/>
+        <input name="title" type="text" id="title" onChange={handleChange}/>
         <br/>
         <label htmlFor="text">text</label>
-        <input type="text" id="text" onChange={handleChange}/>
+        <input name="text" type="text" id="text" onChange={handleChange}/>
         <br/>
         <label htmlFor="rating">rating</label>
-        <input type="number" id="rating" onChange={handleChange}/>
+        <input name="rating" type="number" id="rating" onChange={handleChange}/>
         <br/>
         <button className="button">Add</button>
       </form>
