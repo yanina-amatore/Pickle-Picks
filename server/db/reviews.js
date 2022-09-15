@@ -9,8 +9,7 @@ function getSavedReviews(userId, db = connection) {
 }
 
 function addReview(reviewObj, db = connection) {
-  return db('reviews').select().add(reviewObj)
+  return db('reviews').select().insert(reviewObj)
 }
-
 
 module.exports = { getReviews, getSavedReviews, addReview}

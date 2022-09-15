@@ -24,5 +24,18 @@ router.get('/saved/:userId', (req, res) => {
 })
 
 
+//work in progress//
+router.post('/addreview', (req, res)=> {
+  const review =req.body
+ 
+  db.addReview(review)
+    .then (()=> res.redirect('/'))
+    .catch (err => res.status(500).send(err.message))
+
+   
+})
+
+/////
+
 
 module.exports = router

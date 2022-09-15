@@ -16,3 +16,8 @@ export async function postWishApi(id) {
   const resp = await request.post('/api/reviews/saved').send(id)
   return resp
 }
+
+export async function postNewReviewApi(reviewObj, id){
+  const resp = await request.post('/api/reviews/addreview').send(reviewObj)
+  return resp
+}
