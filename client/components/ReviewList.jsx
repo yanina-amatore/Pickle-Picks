@@ -1,30 +1,45 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import {Link, useParams} from 'react-router-dom'
 
 import { fetchReview } from '../actions/review'
 
 // Data needs to come from Reviewlist prop
-function ReviewList(data) {
-  // const dispatch = useDispatch()
+function ReviewList() {
+  const dispatch = useDispatch()
 
-  const reviews = useSelector((state) => state.reviews)
+  const reviews = useSelector((store) => store.reviews)
+
+  // let { id } = useParams();
+  // console.log('id', id)
+
+  useEffect(() => {
+    dispatch(fetchReview())
+  }, [])
+
 
   return (
-<>
-    <div>
-     
-
-      <h2>Name</h2>
-      <p> Rating </p>
-      <p> Date </p>
-      <p> Text (review) </p>      
-    </div>
-    <div>
-      {/* btn - OnClick func Action SAVE REVIEW */}
-      <button> Add to wish list</button>
-    </div>
-
-</>
+    <>
+      <div>
+        {reviews?.map((review, idx) => {
+          const id = review.id
+          return (
+            // review.location, review.title, review.rating
+            <Link to={`/review/${id}`} data={review} key={idx}>
+            <div >
+              <h2>{review.location}</h2>
+              <p>Rating: {review.rating}</p>
+              <p>{review.title}</p>
+              {/* <div> */}
+              <button> Add to wish list</button>
+              {/* </div> */}
+            </div>
+            </Link>
+            
+          )
+        })}
+      </div>
+    </>
   )
 }
 

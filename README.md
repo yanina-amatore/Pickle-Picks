@@ -87,7 +87,7 @@ As Pickle:
 | --- | --- | --- | --- | --- |
 | Post | /api/auth/login | Yes | Log In a User | The Users JWT Token |
 | Post | /api/auth/register | Yes | Register a User | The Users JWT Token |
-| Get | /api/reviews | No | Get the list of Pickle reviews | Array of Objects (object = a review) |
+| Get | /api/v1/reviews | No | Get the list of Pickle reviews | Array of Objects (object = a review) |
 | Get | /api/reviews/saved | Yes | Get the list of reviews a user has saved | Array of ints (int = an id) |
 | Post | /api/reviews/saved | Yes | Add a saved review to the db | 201 status code |
 
