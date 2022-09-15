@@ -45,10 +45,14 @@ function Nav() {
               <Link to="/" className="navbar-item is-large">
                 Home
               </Link>
+              
             {auth.isAuthenticated ? (<>
               <Link to="/" className="navbar-item is-large" onClick={logout}>
                 Logout
               </Link>
+              {auth.user.id === 1 && <Link to="/reviews/addreview" className="navbar-item is-large">
+                Add Review
+              </Link>}
             </>
 
             ) : (

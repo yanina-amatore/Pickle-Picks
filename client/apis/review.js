@@ -1,3 +1,4 @@
+
 import request from 'superagent'
 
 // Get Review Data
@@ -22,3 +23,17 @@ export async function postSaveReview(userId, reviewId) {
     .send({ postId: reviewId })
   return resp
 }
+
+
+// Post new review from pickles
+
+export function postNewReviewApi(reviewObj){
+  return request.post('/api/v1/reviews/addreview').send(reviewObj)
+  .then((resp) => {
+    
+    return resp.body
+  })
+}
+
+
+

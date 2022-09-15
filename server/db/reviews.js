@@ -3,6 +3,7 @@ const connection = require('./connection')
 function getReviews(db = connection) {
   return db('reviews').select()
 }
+
 async function getSavedReviews(userId, db = connection) {
   const savedReviews = await db('saved_reviews')
     .select('review_id')
@@ -16,4 +17,8 @@ function postReview(userId, reviewId, db = connection) {
   return db('saved_reviews').insert(data)
 }
 
-module.exports = { getReviews, getSavedReviews, postReview }
+function addReview(reviewObj, db = connection) {
+  return db('reviews').select().insert(reviewObj)
+}
+
+module.exports = { getReviews, getSavedReviews, postReview, addReview}
