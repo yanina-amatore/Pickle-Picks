@@ -16,7 +16,7 @@ function userExists(username, db = connection) {
     .then((users) => users.length > 0)
 }
 
-function getUserByUsername(username, db = connection) {
+function getUserByUsername(username, db = connection) { 
   return db('users').where('username', username).first()
 }
 
