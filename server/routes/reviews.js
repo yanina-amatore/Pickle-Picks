@@ -22,4 +22,21 @@ router.get('/saved/:userId', (req, res) => {
       console.log('Error in Server:' + err.message)
     })
 })
+
+
+//work in progress//
+router.post('/addreview', (req, res)=> {
+  const review =req.body
+ 
+  db.addReview(review)
+    .then((thing)=>res.json(thing))
+    // .then (()=> res.redirect('/'))
+    .catch (err => res.status(500).send(err.message))
+
+   
+})
+
+/////
+
+
 module.exports = router

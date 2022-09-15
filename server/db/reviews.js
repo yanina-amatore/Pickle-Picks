@@ -8,4 +8,8 @@ function getSavedReviews(userId, db = connection) {
   return db('saved_reviews').select('review_id').where('user_id', userId)
 }
 
-module.exports = { getReviews, getSavedReviews }
+function addReview(reviewObj, db = connection) {
+  return db('reviews').select().insert(reviewObj)
+}
+
+module.exports = { getReviews, getSavedReviews, addReview}
