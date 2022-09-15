@@ -16,8 +16,11 @@ function AddReviewForm(){
     rating:0,
     date: today
   })
-  const handleChange = (evt) => {
 
+  const [thankSwitch, setThankSwitch] = useState(false)
+
+  const handleChange = (evt) => {
+    setThankSwitch(false)
     setReview({
       ...review,
       [evt.target.name] : evt.target.value,
@@ -25,10 +28,12 @@ function AddReviewForm(){
   }
   const handleSubmbit = (evt) => {
     evt.preventDefault()
+    setThankSwitch(true)
     if (id === 1) {
       postNewReviewApi(review)
     } 
     else { console.log('you are not authorized') }
+    
   }
 
   return(
@@ -49,6 +54,7 @@ function AddReviewForm(){
         <br/>
         <button className="button">Add</button>
       </form>
+      {thankSwitch && <p>Good pup!</p>}
     </>
   )
 }
