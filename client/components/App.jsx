@@ -6,6 +6,8 @@ import Login from './Login'
 import Register from './Register'
 import Nav from './Nav'
 import Home from './Home'
+import Review from './Review'
+import ReviewList from './ReviewList'
 
 import { checkAuth } from '../actions/auth'
 
@@ -38,7 +40,7 @@ function App() {
           />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          {/* <Route path="/reviewlist" element={<ReviewList />} /> */}
+          <Route path="/reviewlist" element={<ReviewList />} />
           <Route path="/review" element={<Review />} />
 
         </Routes>
