@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import React, {useState} from "react";
 
 import { postNewReviewApi } from "../apis/review";
-import res from "express/lib/response";
+
 
 
 function AddReviewForm(){
@@ -27,7 +27,8 @@ function AddReviewForm(){
     evt.preventDefault()
     if (id === 1) {
       postNewReviewApi(review)
-    } else { res.send('you are not authorized') }
+    } 
+    else { console.log('you are not authorized') }
   }
 
   return(
@@ -46,7 +47,7 @@ function AddReviewForm(){
         <label htmlFor="rating">rating</label>
         <input type="number" id="rating" onChange={handleChange}/>
         <br/>
-     
+        <button className="button">Add</button>
       </form>
     </>
   )
