@@ -1,17 +1,17 @@
 import { getReviewsApi, getSaved } from '../apis/review'
 
 export const RECEIVE_REVIEW = 'RECEIVE_REVIEW'
-export const RECEIVE_SAVE = 'RECEIVE_SAVE'
+export const RECEIVE_SAVED = 'RECEIVE_SAVED'
 // action show
-export function showReview(reviews) {
+export function receiveReview(reviews) {
   return {
     type: RECEIVE_REVIEW,
     payload: reviews,
   }
 }
-export function receiveSave(reviews) {
+export function receiveSaved(reviews) {
   return {
-    type: RECEIVE_SAVE,
+    type: RECEIVE_SAVED,
     payload: reviews,
   }
 }
@@ -20,16 +20,16 @@ export function fetchReview() {
   return (dispatch) => {
     return getReviewsApi().then((data) => {
       console.log('In thunk', data)
-      dispatch(showReview(data))
+      dispatch(receiveReview(data))
     })
   }
 }
 
-export function fetchSaveReview(userId) {
+export function fetchSavedReviews(userId) {
   return (dispatch) => {
     return getSaved(userId).then((data) => {
-      console.log('I am here', data)
-      dispatch(receiveSave(data))
+      console.log('fetchSaved', data)
+      dispatch(receiveSaved(data))
     })
   }
 }

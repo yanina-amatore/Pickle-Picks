@@ -32,6 +32,7 @@ function Review() {
           <button
             onClick={() => {
               dispatch(addReviewToWishlist(store.auth.user.id, id))
+              alert('success add to wishlist')
 
               // redirect code
             }}

@@ -29,7 +29,7 @@ function ReviewList() {
                 <p>Rating: {review.rating}</p>
                 <p>{review.title}</p>
                 {/* <div> */}
-                <button> View more details</button>
+                {/* <button> View more details</button> */}
                 {/* </div> */}
               </div>
             </Link>

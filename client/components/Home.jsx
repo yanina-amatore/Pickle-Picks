@@ -17,7 +17,7 @@ function Home() {
         debitis soluta ea.
       </p>
       <Link to="/reviewlist">Review List</Link>
-      <Link to="/savelist">Save List</Link>
+      {state.auth.user != null && <Link to="/savelist">Save List</Link>}
     </div>
   )
 }
