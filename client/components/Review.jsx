@@ -1,11 +1,12 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate, Navigate } from 'react-router-dom'
 import { addReviewToWishlist } from '../actions/saved'
 
 // Data needs to come from Reviewlist prop
 function Review() {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const store = useSelector((store) => store)
   console.log(store)
@@ -19,28 +20,31 @@ function Review() {
 
   return (
     <>
-      <div>
-        <h2>Name: {title}</h2>
-        <p> Rating: {rating} </p>
-        <p> Date: {date} </p>
-        <p> Location: {location} </p>
-        <p> {text} </p>
+      <div class="container">
+     
+        <div>
+          <h2> Name: {location} </h2>
+          <p> Rating: {rating} </p>
+          <p> Date: {date} </p>
+          <p> {text} </p>
+        </div>
+        <div>
+          {/* btn - OnClick func Action SAVE REVIEW */}
+          {store.auth.user != null && (
+            <button
+              onClick={() => {
+                dispatch(addReviewToWishlist(store.auth.user.id, id))
+                alert('success add to wishlist')
+                navigate("/savelist/")
+                // redirect code
+              }}
+            >
+              Add to wish list
+            </button>
+          )}
+        </div>
       </div>
-      <div>
-        {/* btn - OnClick func Action SAVE REVIEW */}
-        {store.auth.user != null && (
-          <button
-            onClick={() => {
-              dispatch(addReviewToWishlist(store.auth.user.id, id))
-              alert('success add to wishlist')
 
-              // redirect code
-            }}
-          >
-            Add to wish list
-          </button>
-        )}
-      </div>
     </>
   )
 }

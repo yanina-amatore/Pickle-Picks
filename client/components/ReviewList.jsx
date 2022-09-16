@@ -32,20 +32,16 @@ function ReviewList() {
 
   return (
     <>
-      <div>
+      <div className='is-flex is-flex-wrap-wrap  m-3' >
         {sortedReviews?.map((review, idx) => {
           const id = review.id
           return (
             // review.location, review.title, review.rating
             <Link to={`/review/${id}`} data={review} key={idx}>
-              <div>
-                <h2>{review.location}</h2>
-                <p>Rating: {review.rating}</p>
-                <p>{review.title}</p>
-                {/* <div> */}
-                <button> Add to wish list</button>
-                {/* <button> View more details</button> */}
-                {/* </div> */}
+              <div className='box is-two-fifths  m-3 p-6'>
+                <h2 className='subtitle is-2'>{review.location}</h2>
+                <p className='is-size-3'><b>Rating: </b>{review.rating}</p>
+                <p className='is-size-4'>{review.title}</p>               
               </div>
             </Link>
           )
