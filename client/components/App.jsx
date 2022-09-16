@@ -10,6 +10,8 @@ import Review from './Review'
 import ReviewList from './ReviewList'
 import SavedList from './SavedList'
 
+import AddReviewForm from './AddReviewForm'
+
 import { checkAuth } from '../actions/auth'
 import { fetchReview } from '../actions/review'
 
@@ -40,11 +42,10 @@ function App() {
 
       <div className="">
         <Routes>
-          <Route
-            path="/"
-            // element={auth.isAuthenticated ? <Home /> : <Login />}
-            element={<Home />}
-          />
+          <Route path="/" element={<Home />} />
+          {auth.user?.id === 1 && (
+            <Route path="/reviews/addreview" element={<AddReviewForm />} />
+          )}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/reviewlist" element={<ReviewList />} />
