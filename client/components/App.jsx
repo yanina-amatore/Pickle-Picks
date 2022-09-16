@@ -8,9 +8,9 @@ import Nav from './Nav'
 import Home from './Home'
 import Review from './Review'
 import ReviewList from './ReviewList'
-import SaveList from './SaveList'
-import AddReviewForm from './AddReviewForm'
+import SavedList from './SavedList'
 
+import AddReviewForm from './AddReviewForm'
 
 import { checkAuth } from '../actions/auth'
 import { fetchReview } from '../actions/review'
@@ -42,14 +42,14 @@ function App() {
 
       <div className="">
         <Routes>
-          <Route path="/" element = { <Home/>}/>          
-          {auth.user?.id === 1 &&
-            <Route path="/reviews/addreview" element ={<AddReviewForm />} />
-          } 
+          <Route path="/" element={<Home />} />
+          {auth.user?.id === 1 && (
+            <Route path="/reviews/addreview" element={<AddReviewForm />} />
+          )}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/reviewlist" element={<ReviewList />} />
-          <Route path="/savelist/" element={<SaveList reviews={reviews} />} />
+          <Route path="/savelist/" element={<SavedList reviews={reviews} />} />
           <Route path="/review/:id" element={<Review />} />
         </Routes>
       </div>

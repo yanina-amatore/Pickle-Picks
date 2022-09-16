@@ -1,4 +1,4 @@
-import { RECEIVE_REVIEW, RECEIVE_SAVE } from '../actions/review'
+import { RECEIVE_REVIEW, RECEIVE_SAVED } from '../actions/review'
 
 const reducer = (state = null, action) => {
   const { type, payload } = action
@@ -6,8 +6,8 @@ const reducer = (state = null, action) => {
   switch (type) {
     case RECEIVE_REVIEW:
       return payload
-    case RECEIVE_SAVE:
-      return payload
+    // case RECEIVE_SAVED:
+    //   return payload
     default:
       return state
   }

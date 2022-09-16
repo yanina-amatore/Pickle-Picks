@@ -4,14 +4,14 @@ import request from 'superagent'
 // Get Review Data
 export function getReviewsApi() {
   return request.get('/api/v1/reviews').then((resp) => {
-    console.log('in api', resp.body)
+    console.log('in api get', resp.body)
     return resp.body
   })
 }
 // Receive save data
 export function getSaved(userId) {
   return request.get(`/api/v1/reviews/saved/${userId}`).then((resp) => {
-    console.log('in api', resp.body)
+    console.log('in api getsaved', resp.body)
     return resp.body
   })
 }
