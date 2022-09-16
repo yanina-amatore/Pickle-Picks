@@ -1,41 +1,54 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {Link, useParams} from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 import { fetchReview } from '../actions/review'
 
+import SortButton from './SortButton'
+
 // Data needs to come from Reviewlist prop
 function ReviewList() {
+  const reviews = useSelector((store) => store.reviews)
   const dispatch = useDispatch()
 
-  const reviews = useSelector((store) => store.reviews)
+  let ratingArr = []
+  let foundReview
+  let sortedReviews
 
-  // let { id } = useParams();
-  // console.log('id', id)
+  if (reviews) {
+    for (const review of reviews) ratingArr.push(review.rating)
+  }
+
+  const sortedRating = ratingArr.sort((a, b) => b - a)
+
+  if (reviews) {
+    sortedReviews = sortedRating.map((rating) => {
+      foundReview = reviews.find((review) => review.rating === rating)
+      return foundReview
+    })
+  }
 
   useEffect(() => {
     dispatch(fetchReview())
   }, [])
 
-
   return (
     <>
       <div>
-        {reviews?.map((review, idx) => {
+        {sortedReviews?.map((review, idx) => {
           const id = review.id
           return (
             // review.location, review.title, review.rating
             <Link to={`/review/${id}`} data={review} key={idx}>
-            <div >
-              <h2>{review.location}</h2>
-              <p>Rating: {review.rating}</p>
-              <p>{review.title}</p>
-              {/* <div> */}
-              <button> Add to wish list</button>
-              {/* </div> */}
-            </div>
+              <div>
+                <h2>{review.location}</h2>
+                <p>Rating: {review.rating}</p>
+                <p>{review.title}</p>
+                {/* <div> */}
+                <button> Add to wish list</button>
+                {/* </div> */}
+              </div>
             </Link>
-            
           )
         })}
       </div>
