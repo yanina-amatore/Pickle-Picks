@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import { fetchReview } from '../actions/review'
-
-import SortButton from './SortButton'
 
 // Data needs to come from Reviewlist prop
 function ReviewList() {
@@ -46,6 +44,7 @@ function ReviewList() {
                 <p>{review.title}</p>
                 {/* <div> */}
                 <button> Add to wish list</button>
+                {/* <button> View more details</button> */}
                 {/* </div> */}
               </div>
             </Link>
