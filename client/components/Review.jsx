@@ -20,7 +20,7 @@ function Review() {
 
   return (
     <>
-      <div class="container">
+      <div className="container">
      
         <div>
           <h2> Name: {location} </h2>

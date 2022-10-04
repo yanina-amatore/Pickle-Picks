@@ -24,11 +24,14 @@ function App() {
   // console.log('id', id)
 
   useEffect(() => {
-    const confirmSuccess = () => {}
-    dispatch(checkAuth(confirmSuccess))
+    const confirmSuccess = () => 
+    dispatch(checkAuth(confirmSuccess),
     dispatch(fetchReview())
+    )
+    
   }, [])
 
+ 
   return (
     <div className="container ">
       <div className="hero is-small is-primary">
