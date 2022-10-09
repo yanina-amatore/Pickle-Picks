@@ -5,6 +5,7 @@
 
 // Import custom variables and Bulma overides
 @import "./variables.scss";
+@import './main.scss';
 
 // Import only what you need from Bulma
 @import "bulma/sass/utilities/_all.sass";
@@ -16,3 +17,4 @@
 @import "bulma/sass/components/navbar.sass";
 @import "bulma/sass/layout/hero.sass";
 @import "bulma/sass/layout/section.sass";
+

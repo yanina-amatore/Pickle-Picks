@@ -42,10 +42,19 @@ function Nav() {
           className={`navbar-menu ${burgerVisible ? 'is-active' : ''}`}
         >
           <div className="navbar-end">
-            {auth.isAuthenticated ? (
-              <Link to="/" className="navbar-item is-large" onClick={logout}>
+              <Link to="/" className="navbar-item is-size-4">
+                Home
+              </Link>
+              
+            {auth.isAuthenticated ? (<>
+              <Link to="/" className="navbar-item is-size-4" onClick={logout}>
                 Logout
               </Link>
+              {auth.user.id === 1 && <Link to="/reviews/addreview" className="navbar-item is-large">
+                Add Review
+              </Link>}
+            </>
+
             ) : (
               <>
                 <Link
