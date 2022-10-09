@@ -4,7 +4,10 @@ import { HashRouter as Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
+
+// uses the local storage browser API
 import { loadState, saveState } from './localStorage';
+// throttle function  insures that it doesn't get called more often than once a second.
 import throttle from 'lodash/throttle';
 
 import reducers from './reducers'
