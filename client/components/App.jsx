@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Routes, Route, Link, useParams } from 'react-router-dom'
+import { Routes, Route, Link} from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
 import Login from './Login'
@@ -20,15 +20,11 @@ function App() {
   const auth = useSelector((redux) => redux.auth)
   const reviews = useSelector((state) => state.reviews)
 
-  // let { id } = useParams();
-  // console.log('id', id)
-
+  
   useEffect(() => {
-    const confirmSuccess = () => 
-    dispatch(checkAuth(confirmSuccess),
+    const confirmSuccess = () => {}
+    dispatch(checkAuth(confirmSuccess))
     dispatch(fetchReview())
-    )
-    
   }, [])
 
  
@@ -37,7 +33,7 @@ function App() {
       <div className="hero is-small is-primary">
         <div className="hero-body ">
           <Link to="/" className="">
-            <h1 className="title is-1">Pickle's Picks</h1>
+            <h1 className="title is-1">Pickle`s Picks</h1>
           </Link>
           <Nav />
         </div>

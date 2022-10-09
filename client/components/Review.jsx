@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams, useNavigate, Navigate } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { addReviewToWishlist } from '../actions/saved'
 
 // Data needs to come from Reviewlist prop
@@ -12,7 +12,7 @@ function Review() {
   console.log(store)
   let { id } = useParams()
 
-  const { location, rating, title, date, text } = store.reviews.find(
+  const { location, rating,date, text } = store.reviews.find(
     (element) => element.id == id
   )
 

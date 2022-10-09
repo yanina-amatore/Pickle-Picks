@@ -4,12 +4,22 @@ import { HashRouter as Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
+import { loadState, saveState } from './localStorage';
+import throttle from 'lodash/throttle';
 
 import reducers from './reducers'
 import App from './components/App'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)))
+const persistedState = loadState();
+const store = createStore(reducers, persistedState, composeEnhancers(applyMiddleware(thunk)))
+
+store.subscribe(throttle(() => {
+  saveState({
+    auth: store.getState().auth,
+    reviews: store.getState().reviews
+  });
+}, 1000));
 
 document.addEventListener('DOMContentLoaded', () => {
   render(

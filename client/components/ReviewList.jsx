@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import { fetchReview } from '../actions/review'
+
 
 // Data needs to come from Reviewlist prop
 function ReviewList() {
   const reviews = useSelector((store) => store.reviews)
-  const dispatch = useDispatch()
+
 
   let ratingArr = []
   let foundReview
@@ -26,9 +26,6 @@ function ReviewList() {
     })
   }
 
-  useEffect(() => {
-    dispatch(fetchReview())
-  }, [])
 
   return (
     <>
@@ -41,7 +38,7 @@ function ReviewList() {
               <div className='box is-two-fifths  m-3 p-6'>
                 <h2 className='subtitle is-2'>{review.location}</h2>
                 <p className='is-size-3'><b>Rating: </b>{review.rating}</p>
-                <p className='is-size-4'>{review.title}</p>               
+                <p className='is-size-4'>{review.title}</p>
               </div>
             </Link>
           )
