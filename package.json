@@ -93,6 +93,7 @@
     "lodash": "^4.17.21",
     "pg": "^8.8.0",
     "prettier": "2.6.1",
+    "react-toastify": "^9.0.8",
     "save": "^2.9.0",
     "superagent": "7.1.1"
   },

@@ -2,26 +2,28 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams, useNavigate } from 'react-router-dom'
 import { addReviewToWishlist } from '../actions/saved'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-// Data needs to come from Reviewlist prop
+
 function Review() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const notify = () => toast("Wow so easy!");
 
   const store = useSelector((store) => store)
   console.log(store)
   let { id } = useParams()
 
-  const { location, rating,date, text } = store.reviews.find(
+  const { location, rating, date, text } = store.reviews.find(
     (element) => element.id == id
   )
 
-  // check with ming for table names after new migration (migrate latest)
 
   return (
     <>
       <div className="container">
-     
+
         <div>
           <h2> Name: {location} </h2>
           <p> Rating: {rating} </p>
@@ -29,11 +31,15 @@ function Review() {
           <p> {text} </p>
         </div>
         <div>
+
+        </div>
+        <div>
           {/* btn - OnClick func Action SAVE REVIEW */}
           {store.auth.user != null && (
             <button
               onClick={() => {
                 dispatch(addReviewToWishlist(store.auth.user.id, id))
+
                 alert('success add to wishlist')
                 navigate("/savelist/")
                 // redirect code
@@ -41,7 +47,9 @@ function Review() {
             >
               Add to wish list
             </button>
-          )}
+
+          )
+          }
         </div>
       </div>
 
