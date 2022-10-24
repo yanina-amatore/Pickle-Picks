@@ -25,13 +25,12 @@ function Nav() {
     <nav className="navbar">
       <div className="container">
         <div className="navbar-brand">
-          <span
+          <span 
             onClick={toggleBurger}
             className={`navbar-burger burger ${
               burgerVisible ? 'is-active' : ''
             }`}
-            data-target="navbarMenuHeroA"
-          >
+            data-target="navbarMenuHeroA">
             <span></span>
             <span></span>
             <span></span>
