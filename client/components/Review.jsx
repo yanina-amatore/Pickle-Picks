@@ -2,14 +2,14 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams, useNavigate } from 'react-router-dom'
 import { addReviewToWishlist } from '../actions/saved'
-// import { ToastContainer, toast } from 'react-toastify';
+
 import 'react-toastify/dist/ReactToastify.css';
 
 
 function Review() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  // const notify = () => toast("Wow so easy!");
+
 
   const store = useSelector((store) => store)
   console.log(store)

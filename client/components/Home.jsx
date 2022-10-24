@@ -15,10 +15,10 @@ function Home() {
       <section className='home section'>
         <div className='columns is-mobile'>
           <div className='column is-half is-flex is-align-items-center '>
-            <p className= 'has-text-justified is-size-4 px-4'>Pickle and her owner has traveled far and wide finding places to eat and spend time in. She has been so excited about it that she wanted to make a blog about it. Follow along Pickle's journey as she ventures out to more places to spend time in and reports back what she thinks, with the hopes of more dog friends joining along to make the experience more dog friendly.</p>
+            <p className= 'has-text-justified is-size-4 px-4'>Pickle and her owner has traveled far and wide finding places to eat and spend time in. She has been so excited about it that she wanted to make a blog about it. Follow along Pickle&apos;s journey as she ventures out to more places to spend time in and reports back what she thinks, with the hopes of more dog friends joining along to make the experience more dog friendly.</p>
           </div>
         <div className="column image ">          
-          <img className='is-rounded' src='../images/6.jpg' alt='Picture of Pickle' />        
+          <img className='is-rounded' src='../images/6.jpg' alt='Pickle' />        
         </div>
         </div>
       </section>

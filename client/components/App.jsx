@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Routes, Route, Link} from 'react-router-dom'
+import { Routes, Route} from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
 import Login from './Login'
@@ -30,12 +30,9 @@ function App() {
  
   return (
     <div className="container ">
-      <div className="hero is-small is-primary">
+      <div className="hero is-small is-primary ">
         <div className="hero-body ">
-          <Link to="/" className="">
-            <h1 className="title is-1">Pickle`s Picks</h1>
-          </Link>
-          <Nav />
+           <Nav />
         </div>
       </div>
 

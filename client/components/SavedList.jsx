@@ -58,10 +58,3 @@ function ReviewList(props) {
 }
 
 export default ReviewList
-{/* <Link to={`/review/${id}`} data={review} key={idx}>
-<div className='box is-two-fifths  m-3 p-6'>
-  <h2 className='subtitle is-2'>{review.location}</h2>
-  <p className='is-size-3'><b>Rating: </b>{review.rating}</p>
-  <p className='is-size-4'>{review.title}</p>
-</div>
-</Link> */}
