@@ -23,31 +23,35 @@ function Nav() {
 
   return (
     <nav className="navbar">
-      <div className="container">
-        <div className="navbar-brand">
-          <span
-            onClick={toggleBurger}
-            className={`navbar-burger burger ${
-              burgerVisible ? 'is-active' : ''
-            }`}
-            data-target="navbarMenuHeroA"
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
+
+      <div className="navbar-brand">
+        <div className='Logo'>
+          <Link to="/" className="">
+            <h1 className="title is-1">Pickle&apos;s Picks</h1>
+          </Link>
         </div>
-        <div
-          id="navbarMenuHeroA"
-          className={`navbar-menu ${burgerVisible ? 'is-active' : ''}`}
-        >
-          <div className="navbar-end">
-              <Link to="/" className="navbar-item is-size-4">
-                Home
-              </Link>
-              
-            {auth.isAuthenticated ? (<>
-              <Link to="/" className="navbar-item is-size-4" onClick={logout}>
+        <span
+          onClick={toggleBurger}
+          className={`navbar-burger burger ${burgerVisible ? 'is-active' : ''
+            }`}
+          data-target="navbarMenuHeroA">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </div>
+      <div
+        id="navbarMenuHeroA"
+        className={`navbar-menu ${burgerVisible ? 'is-active' : ''}`}
+      >
+        <div className="navbar-end">
+          <Link to="/" className="navbar-item is-right">
+            Home
+          </Link>
+
+          {auth.isAuthenticated ? (
+            <>
+              <Link to="/" className="navbar-item " onClick={logout}>
                 Logout
               </Link>
               {auth.user.id === 1 && <Link to="/reviews/addreview" className="navbar-item is-large">
@@ -55,29 +59,30 @@ function Nav() {
               </Link>}
             </>
 
-            ) : (
-              <>
-                <Link
-                  onClick={toggleBurger}
-                  className="navbar-item is-large"
-                  to="/login"
-                >
-                  Login
-                </Link>
-                <Link
-                  onClick={toggleBurger}
-                  className="navbar-item"
-                  to="/register"
-                >
-                  Register
-                </Link>
-              </>
-            )}
-          </div>
+          ) : (
+            <>
+              <Link
+                onClick={toggleBurger}
+                className="navbar-item is-large"
+                to="/login"
+              >
+                Login
+              </Link>
+              <Link
+                onClick={toggleBurger}
+                className="navbar-item"
+                to="/register"
+              >
+                Register
+              </Link>
+            </>
+          )}
         </div>
       </div>
+
     </nav>
   )
 }
 
 export default Nav
+

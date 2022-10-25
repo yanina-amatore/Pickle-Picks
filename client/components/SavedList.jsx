@@ -12,7 +12,8 @@ function ReviewList(props) {
   // const [savedReviews, setSavedReviews] = useState([])
 
   useEffect(() => {
-    dispatch(fetchSavedReviews(store.auth.user.id)).then(() => {
+    dispatch(fetchSavedReviews(store.auth.user.id))
+    .then(() => {
       const savedReviews = store.reviews.map((review) => {
         store.saved.includes(review.id)
       })
@@ -31,7 +32,7 @@ function ReviewList(props) {
   return (
     <>
       <div>
-        <h3> Saved List </h3>
+        <h3 className='Title'> My Save Bunch </h3>
         {/* {savedReviews?.map((review, idx) => { */}
         {store.reviews?.map((review, idx) => {
           const id = review.id
@@ -40,10 +41,10 @@ function ReviewList(props) {
             return (
               // review.location, review.title, review.rating
               <Link to={`/review/${id}`} data={review} key={idx}>
-                <div>
-                  <h2>{review.location}</h2>
-                  <p>Rating: {review.rating}</p>
-                  <p>{review.title}</p>
+                <div className='box is-two-fifths  m-3 p-6'>
+                <h2 className='subtitle is-3'>{review.location}</h2>
+                <p className='is-size-5'>Rating: {review.rating}</p>
+                <p className='is-size-4'>{review.title}</p>
 
                   <button> View more details</button>
                 </div>
