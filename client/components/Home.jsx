@@ -4,13 +4,9 @@ import { Link } from 'react-router-dom'
 
 function Home() {
   const state = useSelector((redux) => redux)
+
   return (
-    <>
-    <section className='userName section'>
-      <h2 className='subtitle is-3 has-text-right is-capitalized'>
-        Welcome {state.auth.user ? state.auth.user.username + '!' : 'Friend!'}{' '}
-      </h2>
-      </section>
+    <>   
     <div>
       <section className='home section'>
         <div className='columns is-mobile'>
