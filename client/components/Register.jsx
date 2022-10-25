@@ -46,16 +46,17 @@ function Register() {
   }
 
   return (
-    <div className='section'>
-      <form className="form box py-6 " onSubmit={handleSubmit}>
-        <h1 className="title is-2">Register</h1>
-        <hr />
-        {auth.errorMessage && (
-          <span className="has-text-danger is-large">{auth.errorMessage}</span>
-        )}
-        <div className="container">
-          <div className="field control has-icons-left has-icons-right column is-6 is-offset-one-quarter">
-           
+    <div className='columns'>
+      <div className="column is-one-quarter"></div>
+      <div className='column is-half'>
+        <form className="form box " onSubmit={handleSubmit}>
+          <h1 className="title is-2 mx-6 p-2">Register</h1>
+          <hr />
+          {auth.errorMessage && (
+            <span className="has-text-danger is-large">{auth.errorMessage}</span>
+          )}
+          <div className="container  mx-6 p-2" >
+            <div className="field control has-icons-left has-icons-right">
               <input
                 required
                 className="input is-large has-text-centered is-fullwidth"
@@ -66,56 +67,65 @@ function Register() {
                 onChange={handleChange}
                 value={formData.username}
               />
-            <span className="icon is-small is-left has-text-centered">
-              <i className="fas fa-user"></i>
-            </span>
-          
+              <span className="icon is-small is-left has-text-centered">
+                <i className="fas fa-user"></i>
+              </span>
+            </div>
+            <div className="field control has-icons-left has-icons-right">
+              <input
+                required
+                className="input is-large has-text-centered is-fullwidth"
+                placeholder="Email Adress"
+                type="text"
+                name="email_address"
+                onChange={handleChange}
+                value={formData.email_address}
+              />
+               <span className="icon is-small is-left">
+                  <i className="fas fa-at"></i>
+                </span>
+            </div>
+            <div className="field control has-icons-left has-icons-right">
+              <input
+                required
+                className="input is-large has-text-centered is-fullwidth"
+                placeholder="Password"
+                type="password"
+                name="password"
+                autoComplete="new-password"
+                onChange={handleChange}
+                value={formData.password}
+              />
+              <span className="icon is-small is-left">
+                  <i className="fas fa-unlock"></i>
+                </span>
+            </div>
+            <div className="field control has-icons-left has-icons-right">
+              <input
+                required
+                className="input is-large has-text-centered is-fullwidth"
+                placeholder="Confirm Password"
+                type="password"
+                name="confirm_password"
+                autoComplete="new-password"
+                onChange={handleChange}
+                value={formData.confirm_password}
+              />
+              <span className="icon is-small is-left">
+                  <i className="fas fa-lock"></i>
+                </span>
+            </div>
           </div>
-          <label className="column is-6 is-offset-one-quarter label is-large has-text-centered">
+          <div className="field">
             <input
-              required
-              className="input is-large has-text-centered is-fullwidth"
-              placeholder="Email Adress"
-              type="text"
-              name="email_address"
-              onChange={handleChange}
-              value={formData.email_address}
+              className="button is-success is-large is-fullwidth my-2"
+              value="Register"
+              type="submit"
             />
-          </label>
-        </div>
-        <br />
-        <div className="columns">
-          <label className="column is-6 is-offset-one-quarter label is-large has-text-centered">
-            <input
-              required
-              className="input is-large has-text-centered is-fullwidth"
-              placeholder="Password"
-              type="password"
-              name="password"
-              autoComplete="new-password"
-              onChange={handleChange}
-              value={formData.password}
-            />
-          </label>
-          <label className="column is-6 is-offset-one-quarter label is-large has-text-centered">
-            <input
-              required
-              className="input is-large has-text-centered is-fullwidth"
-              placeholder="Confirm Password"
-              type="password"
-              name="confirm_password"
-              autoComplete="new-password"
-              onChange={handleChange}
-              value={formData.confirm_password}
-            />
-          </label>
-        </div>
-        <input
-          className="button is-success is-large is-centered "
-          value="Register"
-          type="submit"
-        />
-      </form>
+
+          </div>
+        </form>
+      </div>
     </div>
 
   )
