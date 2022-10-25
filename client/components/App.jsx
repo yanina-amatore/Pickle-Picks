@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Routes, Route} from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
 import Login from './Login'
@@ -19,23 +19,26 @@ function App() {
   const dispatch = useDispatch()
   const auth = useSelector((redux) => redux.auth)
   const reviews = useSelector((state) => state.reviews)
+  const state = useSelector((redux) => redux)
 
-  
+
   useEffect(() => {
-    const confirmSuccess = () => {}
+    const confirmSuccess = () => { }
     dispatch(checkAuth(confirmSuccess))
     dispatch(fetchReview())
   }, [])
 
- 
-  return (
-    <div className="container ">
-      <div className="hero is-small is-primary ">
-        <div className="hero-body ">
-           <Nav />
-        </div>
-      </div>
 
+  return (
+    <>
+      <section className="hero is-small is-primary ">
+        <Nav />
+      </section>
+      <section className='userName m-5 is-size-4'>
+        <h2 className='is-5 has-text-right is-capitalized'>
+          Welcome {state.auth.user ? state.auth.user.username + '!' : 'Friend!'}{' '}
+        </h2>
+      </section>
       <div className="">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -49,7 +52,8 @@ function App() {
           <Route path="/review/:id" element={<Review />} />
         </Routes>
       </div>
-    </div>
+    </>
+
   )
 }
 
