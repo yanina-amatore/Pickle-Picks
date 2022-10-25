@@ -41,7 +41,7 @@ function Login() {
           <span className="has-text-danger is-large">{auth.errorMessage}</span>
         )}
         <div className="container  mx-6 p-2" >
-          <div className='field control has-icons-left has-icons-right'>
+          <div className='field control has-icons-left has-icons-right '>
             <input
               required
               className="input has-text-centered is-large is-fullwidth"

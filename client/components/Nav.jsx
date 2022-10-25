@@ -51,7 +51,7 @@ function Nav() {
 
           {auth.isAuthenticated ? (
             <>
-              <Link to="/" className="navbar-link " onClick={logout}>
+              <Link to="/" className="navbar-item " onClick={logout}>
                 Logout
               </Link>
               {auth.user.id === 1 && <Link to="/reviews/addreview" className="navbar-item is-large">
