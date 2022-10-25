@@ -27,7 +27,7 @@ function Nav() {
       <div className="hero is-small is-primary p-4">
         <nav className="navbar is-primary" role="navigation" aria-label="main navigation">
           <div className="navbar-brand">
-            <div className='Logo'>
+            <div className='Logo py-3'>
               <Link to="/" className="">
                 <h1 className="title is-1 pl-5">Pickle&apos;s Picks</h1>
               </Link>

@@ -34,7 +34,7 @@ function App() {
       <section className="hero is-small is-primary ">
         <Nav />
       </section>
-      <section className='userName m-5 is-size-4'>
+      <section className='userName m-5 is-size-5'>
         <h2 className='is-5 has-text-right is-capitalized'>
           Welcome {state.auth.user ? state.auth.user.username + '!' : 'Friend!'}{' '}
         </h2>
