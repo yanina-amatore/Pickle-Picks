@@ -32,7 +32,7 @@ function ReviewList(props) {
   return (
     <>
       <div>
-        <h3 className='Title'> My Save Bunch </h3>
+        <h3 className='Title'> My Saved Reviews </h3>
         {/* {savedReviews?.map((review, idx) => { */}
         {store.reviews?.map((review, idx) => {
           const id = review.id
