@@ -12,7 +12,6 @@ const errorMessages = {
 export function register(creds) {
   return authRegister(creds, { baseUrl })
     .then((mystery) => {
-      console.log('then', mystery)
       return mystery
     })
     .catch((err) => {

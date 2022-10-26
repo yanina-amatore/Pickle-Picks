@@ -14,7 +14,6 @@ function Review() {
   }, [])
 
   const store = useSelector((store) => store)
-  console.log(store)
   let { id } = useParams()
 
   const { location, rating, date, text } = store.reviews.find(
@@ -30,13 +29,17 @@ function Review() {
   return (
     <>
     <section className='section review-wrapper'>
-      <div className='columns is-tablet box'>
-        {/* <div className='column auto'></div> */}
+      <div className='columns is-tablet box'>    
+        <div className='column auto'>
+            <figure className='has-text-centered mt-5'> 
+              <img className='pickle-imgs ' src= {NewImage} alt='pickle pic'/>                  
+            </figure>
+          </div>
         <div className="column is-half ">
             <div className='p-3'>
               <h2 className='is-size-3 pb-2'>{location} </h2>
-              <p className='is-size-5 pb-2'> <b>Rating: {rating}</b></p>
-              <p className='is-size-6 pb-2'> Date: {date} </p>
+              <p className='is-size-5 pb-2'> <b><i className="fa-solid fa-dog mr-2"></i>Rating: {rating}</b></p>
+              <p className='is-size-6 is-italic pb-2'> Date: {date} </p>
               <p className='is-size-6 pb-2'> {text} </p>
               {/* btn - OnClick func Action SAVE REVIEW */}
               {store.auth.user != null && (
@@ -56,11 +59,7 @@ function Review() {
             }             
             </div>
           </div>
-          <div className='column auto'>
-            <figure className='has-text-centered mt-'> 
-              <img className='pickle-imgs ' src= {NewImage} alt='pickle pic'/>                  
-            </figure>
-          </div>
+          
       </div>     
     </section>  
 

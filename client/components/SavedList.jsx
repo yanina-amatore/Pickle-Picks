@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import { fetchReview, fetchSavedReviews } from '../actions/review'
 
 // Data needs to come from Reviewlist prop
-function ReviewList(props) {
+function ReviewList() {
   const dispatch = useDispatch()
   const store = useSelector((store) => store)
   // const [savedReviews, setSavedReviews] = useState([])
@@ -20,7 +20,7 @@ function ReviewList(props) {
     })
     // const savedReviewIds = useSelector((store) => store.saved)
 
-    console.log('this:', store)
+
 
     // fetch(`http://localhost:3000/api/v1/reviews/saved/${store.auth.user.id}`)
     //   .then((res) => res.json())
