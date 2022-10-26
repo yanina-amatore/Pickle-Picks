@@ -19,7 +19,7 @@ export function receiveSaved(reviews) {
 export function fetchReview() {
   return (dispatch) => {
     return getReviewsApi().then((data) => {
-      console.log('In thunk', data)
+      
       dispatch(receiveReview(data))
     })
   }
@@ -28,7 +28,6 @@ export function fetchReview() {
 export function fetchSavedReviews(userId) {
   return (dispatch) => {
     return getSaved(userId).then((data) => {
-      console.log('fetchSaved', data)
       dispatch(receiveSaved(data))
     })
   }

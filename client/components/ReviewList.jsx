@@ -34,7 +34,7 @@ function ReviewList() {
           <h2 className="is-size-3  p-3"><b>Check out Pickle&apos;s reviews</b></h2>
           <p className='is-size-6 px-3'> Click on the cards to see the full review</p>
         </div>
-        <div className='is-flex is-justify-content-space-evenly is-flex-wrap-wrap  mt-6 p-3 ' >
+        <div className='is-flex is-justify-content-space-evenly is-flex-wrap-wrap  mt-3 p-3 ' >
           {sortedReviews?.map((review, idx) => {
             const id = review.id
             return (
