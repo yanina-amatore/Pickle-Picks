@@ -29,21 +29,33 @@ function ReviewList() {
 
   return (
     <>
-      <div className='is-flex is-flex-wrap-wrap  m-3' >
-        {sortedReviews?.map((review, idx) => {
-          const id = review.id
-          return (
-            // review.location, review.title, review.rating
-            <Link to={`/review/${id}`} data={review} key={idx}>
-              <div className='box is-two-fifths  m-3 p-6'>
-                <h2 className='subtitle is-2'>{review.location}</h2>
-                <p className='is-size-3'><b>Rating: </b>{review.rating}</p>
-                <p className='is-size-4'>{review.title}</p>
-              </div>
-            </Link>
-          )
-        })}
-      </div>
+      <section className='review-section'>
+        <div className='mx-3'>
+          <h2 className="is-size-3  p-3"><b>Check out Pickle&apos;s reviews</b></h2>
+          <p className='is-size-6 px-3'> Click on the cards to see the full review</p>
+        </div>
+        <div className='is-flex is-justify-content-space-evenly is-flex-wrap-wrap  mt-6 p-3 ' >
+          {sortedReviews?.map((review, idx) => {
+            const id = review.id
+            return (
+              // review.location, review.title, review.rating
+              <Link to={`/review/${id}`} data={review} key={idx}>
+                <div className='box is-two-fifths  m-3 '>
+                  <div className="card-image">
+                    <figure className="image is-4by3">
+                      <img src='https://picsum.photos/300' alt="Placeholder" />
+                    </figure>
+                  </div>
+                  <h2 className='is-size-4'>{review.location}</h2>
+                  <p className='is-size-4'><b>Rating: </b>{review.rating}</p>
+                  <p className='is-size-5'>{review.title}</p>
+                </div>
+              </Link>
+            )
+          })}
+        </div>
+      </section>
+
     </>
   )
 }
