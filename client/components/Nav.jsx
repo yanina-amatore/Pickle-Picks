@@ -29,7 +29,7 @@ function Nav() {
           <div className="navbar-brand">
             <div className='Logo py-3'>
               <Link to="/" className="">
-                <h1 className="title is-1 pl-5">Pickle&apos;s Picks</h1>
+                <h1 className="title is-2 pl-5 dog-icon">Pickle&apos;s Picks</h1>
               </Link>
             </div>
             <span
