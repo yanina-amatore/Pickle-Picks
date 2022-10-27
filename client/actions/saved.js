@@ -13,8 +13,7 @@ export function saveReview(id) {
 }
 
 // thunk show
-export function addReviewToWishlist(userId, reviewId) {
-  
+export function addReviewToWishlist(userId, reviewId) {  
   return (dispatch) => {
     return postSaveReview(userId, reviewId).then(() => {
       dispatch(saveReview(reviewId))
