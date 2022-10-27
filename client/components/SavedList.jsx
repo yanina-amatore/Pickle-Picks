@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react'
-import { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
@@ -18,6 +17,9 @@ function ReviewList() {
         store.saved.includes(review.id)
       })
     })
+    // .catch(err){
+    //   console.error('error', err);
+    // }
      
   
     // const savedReviewIds = useSelector((store) => store.saved)
