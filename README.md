@@ -1,5 +1,27 @@
 # Pickle's Picks
 
+## Setup
+
+Run the following commands in your terminal:
+
+```sh
+npm install
+npx run knex migrate:latest
+npx run knex seed:run
+cp .env.example .env
+```
+
+To run in development:
+```sh
+npm run dev
+```
+
+To run in production:
+```sh
+npm start
+```
+
+
 ## Week 7 Large group project
 
 The focus of this app is to practice using the Full Stack we teach, (with auth in place) in a large scale app.
@@ -132,26 +154,6 @@ If you wish to dive deeper on authenticare, docs are avalable [here](https://git
 
 ---
 
-## Setup
-
-Run the following commands in your terminal:
-
-```sh
-npm install
-npx knex migrate:latest
-npx knex seed:run
-cp .env.example .env
-```
-
-To run in development:
-```sh
-npm run dev
-```
-
-To run in production:
-```sh
-npm start
-```
 
 
 ## Heroku!!!
