@@ -25,7 +25,7 @@ function Review() {
     dispatch(addReviewToWishlist(store.auth.user.id, id))
     alert('success add to wishlist')
     navigate("/savelist/")
-    // redirect code
+    
   }
 
   return (
@@ -55,11 +55,11 @@ function Review() {
                   </button>
                 )
                 }
-                  <button to="/reviewlist" 
+                  <Link to="/reviewlist" 
                   className="button is-link is-outlined my-5 ">
                   <i className="fa-solid fa-list-ul mr-2"></i> 
                   Full Reviews List
-                  </button>
+                  </Link>
               </div>
             </div>
           </div>
