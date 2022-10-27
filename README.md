@@ -6,8 +6,8 @@ Run the following commands in your terminal:
 
 ```sh
 npm install
-npx run knex migrate:latest
-npx run knex seed:run
+npm run knex migrate:latest
+npm run knex seed:run
 cp .env.example .env
 ```
 
