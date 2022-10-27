@@ -16,7 +16,7 @@ function Home() {
               <p className= 'has-text-justified is-size-6  pt-3 px-6 '>Pickle and her owner has traveled far and wide finding places to eat and spend time in. She has been so excited about it that she wanted to make a blog about it. Follow along Pickle&apos;s journey as she ventures out to more places to spend time in and reports back what she thinks, with the hopes of more dog friends joining along to make the experience more dog friendly.</p>
             
             <div className=" buttons pt-6 px-6" >
-              <Link to="/reviewlist" className="button is-link "><i className="fa-solid fa-list-ul mr-2"></i>Review List</Link>
+              <Link to="/reviewlist" className="button is-link "><i className="fa-solid fa-list-ul mr-2"></i>Reviews List</Link>
               
               {/* User only */}
               {state.auth.user != null && <Link to="/savelist" className="button is-link "><i className="fa-regular fa-heart mr-2"></i>My Wishlist</Link>}

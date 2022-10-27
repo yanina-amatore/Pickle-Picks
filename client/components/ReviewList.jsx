@@ -3,12 +3,10 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 
-
-// Data needs to come from Reviewlist prop
 function ReviewList() {
   const reviews = useSelector((store) => store.reviews)
 
-
+  // sort reviews by rating
   let ratingArr = []
   let foundReview
   let sortedReviews
@@ -38,16 +36,15 @@ function ReviewList() {
           {sortedReviews?.map((review, idx) => {
             const id = review.id
             return (
-              // review.location, review.title, review.rating
-              <Link to={`/review/${id}`} data={review} key={idx}>
-                <div className='box is-two-fifths  m-3 '>
-                  <div className="card-image">
+                <Link to={`/review/${id}`} data={review} key={idx}>
+                  <div className='box is-two-fifths  m-3 '>
+                   <div className="card-image">
                     <figure className="image is-4by3">
                       <img src='https://picsum.photos/300' alt="Placeholder" />
                     </figure>
-                  </div>
-                  <h2 className='is-size-4'>{review.location}</h2>
-                  <p className='is-size-4'><b>Rating: </b>{review.rating}</p>
+                   </div>
+                  <p className='is-size-4'>{review.location}</p>
+                  <p className='is-size-4 has-text-weight-bold'>Rating: {review.rating}</p>
                   <p className='is-size-5'>{review.title}</p>
                 </div>
               </Link>

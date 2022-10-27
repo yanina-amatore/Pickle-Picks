@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Login from './Login'
 import Register from './Register'
 import Nav from './Nav'
+import Footer from './Footer'
 import Home from './Home'
 import Review from './Review'
 import ReviewList from './ReviewList'
@@ -52,6 +53,9 @@ function App() {
           <Route path="/review/:id" element={<Review />} />
         </Routes>
       </div>
+      <section>
+        <Footer/>
+      </section>
     </>
 
   )
