@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams, useNavigate, Link } from 'react-router-dom'
-import { addReviewToWishlist } from '../actions/saved'
+import { addReviewToWishlist } from '../actions/review'
 
 
 
@@ -22,10 +22,10 @@ function Review() {
   const NewImage = `../images/${imgNum}.jpg`
 
   const saveToWishlist = async () => {
-    dispatch(addReviewToWishlist(store.auth.user.id, id))
-    alert('success add to wishlist')
-    navigate("/savelist/")
-    
+    const userId = store.auth.user.id
+    dispatch(addReviewToWishlist(userId, id))
+    alert('Review added to Wishlist')
+    navigate("/savelist/")    
   }
 
   return (
