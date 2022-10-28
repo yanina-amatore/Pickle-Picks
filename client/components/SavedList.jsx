@@ -19,17 +19,18 @@ function ReviewList() {
     dispatch(fetchSavedReviews(store.auth.user.id))
   }, [])
 
+   
   return (
     <>
       <section className='review-section pb-3'>
+      <Link to="/reviewlist" className="button is-small is-link ml-3 "><i className="fa-solid fa-arrow-left mr-2"></i>Back to List</Link>
          <h2 className="is-size-4 is-bold p-3">My Saved Reviews Page</h2>
          <div className='is-flex is-justify-content-space-evenly is-flex-wrap-wrap  my-3 p-3 ' >
           {reviewsStore?.map((review, idx) => {
           const id = review.id
           
           if (wishlistStore.includes(id)) {
-            return (
-            
+            return (            
               <Link to={`/review/${id}`} data={review} key={idx}>
                 <div className='box is-two-fifths   p-3 '>
                   <div className="card-image">
@@ -42,10 +43,7 @@ function ReviewList() {
                     <p className='is-size-4 has-text-weight-bold py-1'>Rating: {review.rating}</p>
                     <p className='is-size-5 py-1'>{review.title}</p>
                   </div>
-            {/* TODO: create a Remove Button */}
-                  <div className='is-right'>
-                    <button className='button is-centered is-danger  is-outlined mt-2'><i className="fa-regular fa-trash-can"></i></button>
-                  </div>
+            
                 </div>
               </Link>
             )
