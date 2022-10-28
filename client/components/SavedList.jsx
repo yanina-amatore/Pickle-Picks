@@ -7,31 +7,27 @@ import { fetchSavedReviews } from '../actions/review'
 
 function ReviewList() {
   const dispatch = useDispatch()
+
   const store = useSelector((store) => store)
+
+  const wishlistStore = store.saved
+  const reviewsStore = store.reviews
+  
  
 
   useEffect(() => {
     dispatch(fetchSavedReviews(store.auth.user.id))
-    // .then(() => {
-    //     store.reviews.map((review) => {
-    //     store.saved.includes(review.id)
-    //   })
-    // })
-    // .catch((err) => {
-    //   console.log('Error:' + err.message)
-    // }) 
- }, [])
+  }, [])
 
   return (
     <>
       <section className='review-section pb-3'>
-      <h2 className="is-size-4 is-bold p-3">My Saved Reviews Page</h2>
- 
-        <div className='is-flex is-justify-content-space-evenly is-flex-wrap-wrap  my-3 p-3 ' >
-        {store.reviews?.map((review, idx) => {
+         <h2 className="is-size-4 is-bold p-3">My Saved Reviews Page</h2>
+         <div className='is-flex is-justify-content-space-evenly is-flex-wrap-wrap  my-3 p-3 ' >
+          {reviewsStore?.map((review, idx) => {
           const id = review.id
-          // console.log('in  saved map', review)
-          if (store.saved.includes(id)) {
+          
+          if (wishlistStore.includes(id)) {
             return (
             
               <Link to={`/review/${id}`} data={review} key={idx}>

@@ -60,7 +60,7 @@ export function fetchSavedReviews(userId) {
 export function addReviewToWishlist(userId, reviewId) {  
   return (dispatch) => {
     return postSaveReview(userId, reviewId).then(() => {
-      dispatch(saveReview(reviewId))
+      dispatch(saveReview(reviewId))   
     
     })
   }

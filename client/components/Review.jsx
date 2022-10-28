@@ -4,16 +4,18 @@ import { useParams, useNavigate, Link } from 'react-router-dom'
 import { addReviewToWishlist } from '../actions/review'
 
 
-
 function Review() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
 
   const store = useSelector((store) => store)
+  const wishlistStore = store.saved
+  const reviewsStore = store.reviews
+ 
   let { id } = useParams()
 
-  const { location, rating, date, text } = store.reviews.find(
+  const { location, rating, date, text } = reviewsStore.find(
     (element) => element.id == id
   )
   // TODO: create upload img to database and make API call to display 
@@ -21,11 +23,16 @@ function Review() {
   const imgNum = Math.floor(Math.random() * (12 - 1) + 1)
   const NewImage = `../images/${imgNum}.jpg`
 
-  const saveToWishlist = async () => {
+  const dispatchSaveReview = async () => {
     const userId = store.auth.user.id
     dispatch(addReviewToWishlist(userId, id))
     alert('Review added to Wishlist')
-    navigate("/savelist/")    
+    navigate("/savelist/")
+  }
+
+  // Check if the id is already in the wishlist
+  function saveToWishlist() {
+    !wishlistStore.includes(id) ? dispatchSaveReview() : alert('already saved in Wishlist')
   }
 
   return (
@@ -55,11 +62,11 @@ function Review() {
                   </button>
                 )
                 }
-                  <Link to="/reviewlist" 
+                <Link to="/reviewlist"
                   className="button is-link is-outlined my-5 ">
-                  <i className="fa-solid fa-list-ul mr-2"></i> 
+                  <i className="fa-solid fa-list-ul mr-2"></i>
                   Full Reviews List
-                  </Link>
+                </Link>
               </div>
             </div>
           </div>
