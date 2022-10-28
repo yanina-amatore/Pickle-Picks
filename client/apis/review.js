@@ -22,6 +22,13 @@ export async function postSaveReview(userId, reviewId) {
   return resp
 }
 
+// Del from wishlist
+export async function delSavedtApi(userId, reviewId){
+  const resp = await request
+  .delete(`/api/v1/reviews/saved/${userId}`)
+  .send({ postId: reviewId })
+  return resp
+}
 
 // Post new review from pickles
 export function postNewReviewApi(reviewObj){

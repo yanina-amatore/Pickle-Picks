@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams, useNavigate, Link } from 'react-router-dom'
-import { addReviewToWishlist } from '../actions/review'
+import { addReviewToWishlist, fetchDelSaved } from '../actions/review'
 
 
 function Review() {
@@ -10,11 +10,12 @@ function Review() {
 
 
   const store = useSelector((store) => store)
-  const wishlistStore = store.saved
+  // const wishlistStore = store.saved
   const reviewsStore = store.reviews
  
   let { id } = useParams()
-
+  const userId = store.auth.user.id
+  
   const { location, rating, date, text } = reviewsStore.find(
     (element) => element.id == id
   )
@@ -23,16 +24,17 @@ function Review() {
   const imgNum = Math.floor(Math.random() * (12 - 1) + 1)
   const NewImage = `../images/${imgNum}.jpg`
 
-  const dispatchSaveReview = async () => {
-    const userId = store.auth.user.id
+
+  const saveToWishlist = () => {
     dispatch(addReviewToWishlist(userId, id))
     alert('Review added to Wishlist')
     navigate("/savelist/")
   }
 
-  // Check if the id is already in the wishlist
-  function saveToWishlist() {
-    !wishlistStore.includes(id) ? dispatchSaveReview() : alert('already saved in Wishlist')
+  //  Delete btn func
+  const handleDelete =  () => {
+    dispatch(fetchDelSaved(userId, id))
+    alert('Removed succesfully from Wishlist')
   }
 
   return (
@@ -52,16 +54,29 @@ function Review() {
               <p className='is-size-6 is-italic pb-2'> Date: {date} </p>
               <p className='is-size-6 pb-2'> {text} </p>
               <div className='buttons'>
-                {/* btn - OnClick func Action SAVE REVIEW */}
-                {store.auth.user != null && (
+
+                {store.auth.user != null &&(
+                  
                   <button
                     className='button is-danger is-outlined my-5'
                     onClick={saveToWishlist}>
                     <i className="fa-solid fa-heart mr-2"></i>
                     Add to my Wishlist
-                  </button>
+                  </button>                 
+                  
                 )
                 }
+                {/* TODO: create a Remove Button */}
+                {store.auth.user != null &&(
+                <div className='is-right'>
+                    <button 
+                    className='button is-centered is-danger  is-outlined mt-2'
+                    onClick={handleDelete}>
+                    <i className="fa-regular fa-trash-can mr-2"></i>Remove from Wishlist</button>
+                  </div>
+                   )
+                  }
+
                 <Link to="/reviewlist"
                   className="button is-link is-outlined my-5 ">
                   <i className="fa-solid fa-list-ul mr-2"></i>

@@ -1,9 +1,10 @@
-import { getReviewsApi, getSaved, postSaveReview } from '../apis/review'
+import { getReviewsApi, getSaved, postSaveReview, delSavedtApi } from '../apis/review'
 
 
 export const RECEIVE_REVIEW = 'RECEIVE_REVIEW'
 export const RECEIVE_SAVED = 'RECEIVE_SAVED'
 export const SAVE_REVIEW = 'SAVE_REVIEW'
+export const DEL_SAVED = 'DEL_SAVED'
 
 // action show
 
@@ -34,7 +35,25 @@ export function receiveSaved(reviews) {
 
 // TODO:
 //  Delete Saved Review
-
+export function delSavedReview(id){
+  return {
+    type:DEL_SAVED,
+    payload: id
+  }
+}
+//Thunk
+export function fetchDelSaved(userId, reviewId) {
+  return (dispatch) => {
+    return delSavedtApi(userId, reviewId)
+    .then((x) => {
+      dispatch(console.log(x))
+    })
+    .catch((err) => {
+      ((err.message))
+    })
+  }
+  
+}
 
 // thunks
 
@@ -44,6 +63,9 @@ export function fetchReview() {
       
       dispatch(receiveReview(data))
     })
+    .catch((err) => {
+      ((err.message))
+    })
   }
 }
 
@@ -51,8 +73,10 @@ export function fetchReview() {
 export function fetchSavedReviews(userId) {
   return (dispatch) => {
     return getSaved(userId).then((data) => {
-      console.log('Wishlist Ids',data)
       dispatch(receiveSaved(data))
+    })
+    .catch((err) => {
+      ((err.message))
     })
   }
 }
@@ -62,6 +86,9 @@ export function addReviewToWishlist(userId, reviewId) {
     return postSaveReview(userId, reviewId).then(() => {
       dispatch(saveReview(reviewId))   
     
+    })
+    .catch((err) => {
+      ((err.message))
     })
   }
 }
