@@ -1,6 +1,6 @@
-import { SAVE_REVIEW } from '../actions/saved'
-import { RECEIVE_SAVED } from '../actions/review'
+import { SAVE_REVIEW, RECEIVE_SAVED } from '../actions/review'
 
+// Reducer to hold wishlist Ids
 const reducer = (state = [], action) => {
   const { type, payload } = action
 

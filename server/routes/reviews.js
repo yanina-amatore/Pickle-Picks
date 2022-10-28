@@ -12,6 +12,21 @@ router.get('/', (req, res) => {
     })
 })
 
+// Save review to Wishlist
+router.post('/saved/:userId', (req, res) => {
+  const userId = req.params.userId
+  const postId = req.body.postId
+  db.postReview(userId, postId)
+    .then(() => {
+      res.sendStatus(201)
+      // 201 success status 
+    })
+    .catch((err) => {
+      console.log('Error in Server:' + err.message)
+    })
+})
+
+// Get Saved Reviews Wishlist
 router.get('/saved/:userId', (req, res) => {
   const userId = req.params.userId
   db.getSavedReviews(userId)
@@ -23,18 +38,7 @@ router.get('/saved/:userId', (req, res) => {
     })
 })
 
-router.post('/saved/:userId', (req, res) => {
-  const userId = req.params.userId
-  const postId = req.body.postId
-  db.postReview(userId, postId)
-    .then(() => {
-      res.sendStatus(201)
-      // res.json({ status: 'success' })
-    })
-    .catch((err) => {
-      console.log('Error in Server:' + err.message)
-    })
-})
+
 
 router.post('/addreview', (req, res)=> {
   const review =req.body
