@@ -1,9 +1,20 @@
 const connection = require('./connection')
 
+// Get all reviews
 function getReviews(db = connection) {
-  return db('reviews').select()
+  return db('reviews')
+  .select()
 }
 
+// Save review to Wishlist
+function postReview(data, db = connection) {
+  
+ // inserts  user_id: userId, review_id: reviewId
+  return db('saved_reviews')
+  .insert(data)
+}
+
+// Get Saved Wishlist
 async function getSavedReviews(userId, db = connection) {
   const savedReviews = await db('saved_reviews')
     .select('review_id')
@@ -11,14 +22,27 @@ async function getSavedReviews(userId, db = connection) {
 
   return savedReviews.map((x) => x.review_id)
 }
-
-function postReview(userId, reviewId, db = connection) {
-  const data = { user_id: userId, review_id: reviewId }
-  return db('saved_reviews').insert(data)
+// Delete a Wishlist review
+function deleteSaved( user_id, review_id , db = connection) {
+  console.log('review_id', review_id)
+  return db('saved_reviews')
+  .where('user_id', user_id )
+  .andWhere('review_id', review_id)
+  .del()
 }
 
+
+// Admin post a new review
 function addReview(reviewObj, db = connection) {
-  return db('reviews').select().insert(reviewObj)
+  return db('reviews')
+  .select()
+  .insert(reviewObj)
 }
 
-module.exports = { getReviews, getSavedReviews, postReview, addReview}
+module.exports = {
+   getReviews, 
+   getSavedReviews, 
+   postReview,
+   deleteSaved, 
+   addReview, 
+  }
