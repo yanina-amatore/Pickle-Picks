@@ -6,7 +6,7 @@ export const RECEIVE_SAVED = 'RECEIVE_SAVED'
 export const SAVE_REVIEW = 'SAVE_REVIEW'
 export const DEL_SAVED = 'DEL_SAVED'
 
-// action show
+
 
 // Get gral review list
 export function receiveReview(reviews) {
@@ -15,6 +15,21 @@ export function receiveReview(reviews) {
     payload: reviews,
   }
 }
+
+// thunks
+
+export function fetchReview() {
+  return (dispatch) => {
+    return getReviewsApi()
+    .then((data) => {
+      dispatch(receiveReview(data))
+    })
+    .catch((err) => {
+      ((err.message))
+    })
+  }
+}
+
 
 
 // Save review to Wishlist
@@ -25,62 +40,7 @@ export function saveReview(id) {
   }
 }
 
-// Get users Wishlist 
-export function receiveSaved(reviews) {
-  return {
-    type: RECEIVE_SAVED,
-    payload: reviews,
-  }
-}
-
-// TODO:
-//  Delete Saved Review
-export function delSavedReview(id){
-  return {
-    type:DEL_SAVED,
-    payload: id
-  }
-}
-//Thunk
-export function fetchDelSaved(userId, reviewId) {
-  return (dispatch) => {
-    return delSavedtApi(userId, reviewId)
-    .then((x) => {
-      dispatch(console.log(x))
-    })
-    .catch((err) => {
-      ((err.message))
-    })
-  }
-  
-}
-
-// thunks
-
-export function fetchReview() {
-  return (dispatch) => {
-    return getReviewsApi().then((data) => {
-      
-      dispatch(receiveReview(data))
-    })
-    .catch((err) => {
-      ((err.message))
-    })
-  }
-}
-
-
-export function fetchSavedReviews(userId) {
-  return (dispatch) => {
-    return getSaved(userId).then((data) => {
-      dispatch(receiveSaved(data))
-    })
-    .catch((err) => {
-      ((err.message))
-    })
-  }
-}
-
+// thunk
 export function addReviewToWishlist(userId, reviewId) {  
   return (dispatch) => {
     return postSaveReview(userId, reviewId).then(() => {
@@ -92,6 +52,52 @@ export function addReviewToWishlist(userId, reviewId) {
     })
   }
 }
+// Get users Wishlist 
+export function receiveSaved(reviews) {
+  return {
+    type: RECEIVE_SAVED,
+    payload: reviews,
+  }
+}
+export function fetchSavedReviews(userId) {
+  return (dispatch) => {
+    return getSaved(userId).then((data) => {
+      dispatch(receiveSaved(data))
+    })
+    .catch((err) => {
+      ((err.message))
+    })
+  }
+}
+
+
+//  Delete Saved Review
+export function delSavedReview(id){
+  console.log('action', id)
+  return {
+    type:DEL_SAVED,
+    payload: id
+  }
+}
+//Thunk
+export function fetchDelSaved(userId, reviewId) {
+  return (dispatch) => {
+    return delSavedtApi(userId, reviewId)
+    .then((res) => {
+      dispatch(delSavedReview(res.review_id))
+    })
+    .catch((err) => {
+      ((err.message))
+    })
+  }
+  
+}
+
+
+
+
+
+
 
 
 

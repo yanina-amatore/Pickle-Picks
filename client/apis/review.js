@@ -1,6 +1,8 @@
 
 import request from 'superagent'
 
+// TODO: refactor function to async
+
 // Get Review Data
 export function getReviewsApi() {
   return request.get('/api/v1/reviews').then((resp) => {
@@ -18,23 +20,26 @@ export function getSaved(userId) {
 export async function postSaveReview(userId, reviewId) {
   const resp = await request
     .post(`/api/v1/reviews/saved/${userId}`)
-    .send({ postId: reviewId })
+    .send({ reviewId: reviewId })
   return resp
 }
 
 // Del from wishlist
-export async function delSavedtApi(userId, reviewId){
-  const resp = await request
+export  function delSavedtApi(userId, reviewId){
+  return request
   .delete(`/api/v1/reviews/saved/${userId}`)
-  .send({ postId: reviewId })
-  return resp
+  .send({ reviewId })
+  .then( (resp)=> {
+    alert('Removed succesfully from Wishlist')
+    console.log('api', resp.body)
+  return resp.body
+}) 
 }
 
 // Post new review from pickles
 export function postNewReviewApi(reviewObj){
   return request.post('/api/v1/reviews/addreview').send(reviewObj)
-  .then((resp) => {
-    
+  .then((resp) => {    
     return resp.body
   })
 }

@@ -10,7 +10,7 @@ function Review() {
 
 
   const store = useSelector((store) => store)
-  // const wishlistStore = store.saved
+
   const reviewsStore = store.reviews
  
   let { id } = useParams()
@@ -34,7 +34,8 @@ function Review() {
   //  Delete btn func
   const handleDelete =  () => {
     dispatch(fetchDelSaved(userId, id))
-    alert('Removed succesfully from Wishlist')
+    navigate("/savelist/")
+
   }
 
   return (
@@ -79,9 +80,8 @@ function Review() {
 
                 <Link to="/reviewlist"
                   className="button is-link is-outlined my-5 ">
-                  <i className="fa-solid fa-list-ul mr-2"></i>
-                  Full Reviews List
-                </Link>
+                  <i className="fa-solid fa-arrow-left mr-2"></i>
+                  Back to Reviews </Link>
               </div>
             </div>
           </div>
