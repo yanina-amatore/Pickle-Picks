@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams, useNavigate, Link } from 'react-router-dom'
-import { addReviewToWishlist, fetchDelSaved } from '../actions/review'
+import { addReviewToWishlist, fetchDelSaved, fetchSavedReviews } from '../actions/review'
 
 
 function Review() {
@@ -13,16 +13,25 @@ function Review() {
 
   const reviewsStore = store.reviews
   const wishlistStore = store.saved
-  console.log('wishlistStore', wishlistStore)
- 
+  
   let { id } = useParams()
   const userId = store.auth.user.id
+
+  useEffect(() => {
+    dispatch(fetchSavedReviews(store.auth.user.id))
+  }, [])
+
   
+  console.log('wishlistStoreIncludes?', wishlistStore)
+
   const { location, rating, date, text } = reviewsStore.find(
     (element) => element.id == id
-  )
-  // TODO: create upload img to database and make API call to display 
-  // To select a random pic from Public folder
+    )
+
+
+    // TODO: create upload img to database and make API call to display 
+    // To select a random pic from Public folder
+    
   const imgNum = Math.floor(Math.random() * (12 - 1) + 1)
   const NewImage = `../images/${imgNum}.jpg`
 
@@ -39,13 +48,11 @@ function Review() {
     navigate("/savelist/")
 
   }
-
-      
+   
 
   return (
     <>
       <section className='section review-wrapper'>
-
         <div className='columns is-tablet box'>
           <div className='column auto'>
             <figure className='has-text-centered mt-5'>
@@ -62,23 +69,26 @@ function Review() {
                 
                   <div className='auth-buttons'>
                   
-                  {wishlistStore?.includes(id)? 
-                    return (  
-                    <button
+                  { wishlistStore?.includes(id)?(  
+                    <>
+                     <button 
+                      className='button is-danger is-outlined my-5'
+                      onClick={handleDelete}>
+                      <i className="fa-regular fa-trash-can mr-2"></i>
+                      Remove from Wishlist
+                      </button>
+                    </>
+                    
+                  ) : (      
+                    <>                              
+                      <button
                       className='button is-danger is-outlined my-5'
                       onClick={saveToWishlist}>
                       <i className="fa-solid fa-heart mr-2"></i>
                         Add to my Wishlist
                       </button>
-                    ) : return   (               
-                    <button 
-                    className='button is-danger is-outlined my-5'
-                    onClick={handleDelete}>
-                    <i className="fa-regular fa-trash-can mr-2"></i>
-                    Remove from Wishlist
-                    </button>
-                    )
-                  }
+                    </>
+                  )}                  
                   </div>
                 
 
