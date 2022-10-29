@@ -24,7 +24,6 @@ async function getSavedReviews(userId, db = connection) {
 }
 // Delete a Wishlist review
 function deleteSaved( user_id, review_id , db = connection) {
-  console.log('review_id', review_id)
   return db('saved_reviews')
   .where('user_id', user_id )
   .andWhere('review_id', review_id)

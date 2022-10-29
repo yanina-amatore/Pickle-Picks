@@ -12,6 +12,8 @@ function Review() {
   const store = useSelector((store) => store)
 
   const reviewsStore = store.reviews
+  const wishlistStore = store.saved
+  console.log('wishlistStore', wishlistStore)
  
   let { id } = useParams()
   const userId = store.auth.user.id
@@ -38,6 +40,8 @@ function Review() {
 
   }
 
+      
+
   return (
     <>
       <section className='section review-wrapper'>
@@ -54,29 +58,29 @@ function Review() {
               <p className='is-size-5 pb-2'> <b><i className="fa-solid fa-dog mr-2"></i>Rating: {rating}</b></p>
               <p className='is-size-6 is-italic pb-2'> Date: {date} </p>
               <p className='is-size-6 pb-2'> {text} </p>
-              <div className='buttons'>
-
-                {store.auth.user != null &&(
+              <div className='buttons'>               
+                
+                  <div className='auth-buttons'>
                   
-                  <button
-                    className='button is-danger is-outlined my-5'
-                    onClick={saveToWishlist}>
-                    <i className="fa-solid fa-heart mr-2"></i>
-                    Add to my Wishlist
-                  </button>                 
-                  
-                )
-                }
-                {/* TODO: create a Remove Button */}
-                {store.auth.user != null &&(
-                <div className='is-right'>
+                  {wishlistStore?.includes(id)? 
+                    return (  
+                    <button
+                      className='button is-danger is-outlined my-5'
+                      onClick={saveToWishlist}>
+                      <i className="fa-solid fa-heart mr-2"></i>
+                        Add to my Wishlist
+                      </button>
+                    ) : return   (               
                     <button 
-                    className='button is-centered is-danger  is-outlined mt-2'
+                    className='button is-danger is-outlined my-5'
                     onClick={handleDelete}>
-                    <i className="fa-regular fa-trash-can mr-2"></i>Remove from Wishlist</button>
-                  </div>
-                   )
+                    <i className="fa-regular fa-trash-can mr-2"></i>
+                    Remove from Wishlist
+                    </button>
+                    )
                   }
+                  </div>
+                
 
                 <Link to="/reviewlist"
                   className="button is-link is-outlined my-5 ">
