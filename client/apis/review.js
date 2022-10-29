@@ -29,8 +29,11 @@ export  function delSavedtApi(userId, reviewId){
   return request
   .delete(`/api/v1/reviews/saved/${userId}`)
   .send({ reviewId })
-  .then( ()=> {
-    alert('Removed succesfully from Wishlist')}) 
+  .then( (resp)=> {
+    alert('Removed succesfully from Wishlist')
+    console.log('api', resp.body)
+  return resp.body
+}) 
 }
 
 // Post new review from pickles

@@ -45,13 +45,12 @@ router.get('/saved/:userId', (req, res) => {
 router.delete('/saved/:userId', async (req, res) => {
   const user_id = req.params.userId
   const review_id = req.body.reviewId
+  const data = { user_id, review_id }
 
   try {
-    let removed = await db.deleteSaved(user_id, review_id)
-    console.log('removed', removed)
-    res.sendStatus(201)
+   await db.deleteSaved(user_id, review_id)
+      res.json(data).sendStatus(201)
  
-
     // 201 success status 
   } catch {
     (err => res.status(500).send(err.message))

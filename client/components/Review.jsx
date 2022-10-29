@@ -10,7 +10,7 @@ function Review() {
 
 
   const store = useSelector((store) => store)
-  // const wishlistStore = store.saved
+
   const reviewsStore = store.reviews
  
   let { id } = useParams()
@@ -33,7 +33,9 @@ function Review() {
 
   //  Delete btn func
   const handleDelete =  () => {
-    dispatch(fetchDelSaved(userId, id))   
+    dispatch(fetchDelSaved(userId, id))
+    navigate("/savelist/")
+
   }
 
   return (
