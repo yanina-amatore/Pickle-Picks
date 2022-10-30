@@ -31,8 +31,7 @@ export  function delSavedtApi(userId, reviewId){
   .send({ reviewId })
   .then( (resp)=> {
     alert('Removed succesfully from Wishlist')
-    console.log('api', resp.body)
-  return resp.body
+    return resp.body
 }) 
 }
 

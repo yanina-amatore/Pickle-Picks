@@ -52,6 +52,7 @@ export function addReviewToWishlist(userId, reviewId) {
     })
   }
 }
+
 // Get users Wishlist 
 export function receiveSaved(reviews) {
   return {
@@ -73,7 +74,6 @@ export function fetchSavedReviews(userId) {
 
 //  Delete Saved Review
 export function delSavedReview(id){
-  console.log('action', id)
   return {
     type:DEL_SAVED,
     payload: id
