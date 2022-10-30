@@ -12,7 +12,9 @@ function Review() {
   const store = useSelector((store) => store)
   const reviewsStore = store.reviews
   const wishlistStore = store.saved
-  
+
+  console.log('wishlistStore', wishlistStore)
+
   let { id } = useParams()
   const userId = store.auth.user.id
 
@@ -20,16 +22,10 @@ function Review() {
     dispatch(fetchSavedReviews(store.auth.user.id))
   }, [])
 
-  
-  
-  const inWishlist= wishlistStore.includes(id)
-  
-  console.log('wishlistStore', wishlistStore)
-  console.log('inWishlist', inWishlist )
 
   const { location, rating, date, text } = reviewsStore.find(
     (element) => element.id == id
-    )
+  )
 
 
   // TODO: create upload img to database and make API call to display 
@@ -37,9 +33,9 @@ function Review() {
 
   const imgNum = Math.floor(Math.random() * (12 - 1) + 1)
   const NewImage = `../images/${imgNum}.jpg`
- 
+
   // ----------------------------------------------------------------
-     
+
   const saveToWishlist = () => {
     dispatch(addReviewToWishlist(userId, id))
     alert('Review added to Wishlist')
@@ -47,12 +43,12 @@ function Review() {
   }
 
   //  Delete btn func
-  const handleDelete =  () => {
+  const handleDelete = () => {
     dispatch(fetchDelSaved(userId, id))
     navigate("/savelist/")
 
   }
-   
+
 
   return (
     <>
@@ -69,32 +65,28 @@ function Review() {
               <p className='is-size-5 pb-2'> <b><i className="fa-solid fa-dog mr-2"></i>Rating: {rating}</b></p>
               <p className='is-size-6 is-italic pb-2'> Date: {date} </p>
               <p className='is-size-6 pb-2'> {text} </p>
-              <div className='buttons'>               
-                
-                  <div className='auth-buttons'>
-                  
-                  { wishlistStore?.includes(id)?(  
-                    <>
-                     <button 
+              <div className='buttons'>
+                <div className='auth-buttons'>
+                  {store.auth.user != null && (
+                    <button
+                      className='button is-danger is-outlined my-5 mx-2'
+                      onClick={saveToWishlist}>
+                      <i className="fa-solid fa-heart mr-2"></i>
+                      Add to my Wishlist
+                    </button>
+                  )}
+                  {store.auth.user != null && (
+
+                    <button
                       className='button is-danger is-outlined my-5'
                       onClick={handleDelete}>
                       <i className="fa-regular fa-trash-can mr-2"></i>
                       Remove from Wishlist
-                      </button>
-                    </>
-                    
-                  ) : (      
-                    <>                              
-                      <button
-                      className='button is-danger is-outlined my-5'
-                      onClick={saveToWishlist}>
-                      <i className="fa-solid fa-heart mr-2"></i>
-                        Add to my Wishlist
-                      </button>
-                    </>
-                  )}                  
-                  </div>
-                
+                    </button>
+
+                  )}
+                </div>
+
 
                 <Link to="/reviewlist"
                   className="button is-link is-outlined my-5 ">
@@ -110,3 +102,4 @@ function Review() {
 }
 
 export default Review
+
