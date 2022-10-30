@@ -4,11 +4,11 @@ import { Link, useNavigate } from 'react-router-dom'
 import { logoutUser } from '../actions/auth'
 
 function Nav() {
-    
+
   const navigateTo = useNavigate()
   const dispatch = useDispatch()
   const auth = useSelector((redux) => redux.auth)
-  
+
   const [burgerVisible, setBurgerVisible] = useState(false)
 
   const toggleBurger = () => {
@@ -31,6 +31,7 @@ function Nav() {
               <Link to="/" className="">
                 <h1 className="title is-2 pl-5 dog-icon">Pickle&apos;s Picks</h1>
               </Link>
+
             </div>
             <span
               onClick={toggleBurger}
@@ -53,12 +54,27 @@ function Nav() {
 
               {auth.isAuthenticated ? (
                 <>
+                  
+                  {auth.user.id === 1 && <Link to="/reviews/addreview" className="navbar-item is-large">
+                    Add Review
+                  </Link>
+                  }
+                  <div className="navbar-item has-dropdown is-hoverable ">
+                    <Link className='navbar-link'>More</Link>
+                    <div className='navbar-dropdown has-background-primary'>
+                      <Link to='/reviewlist' className="navbar-item ">
+                        Review List
+                      </Link>
+                      <Link to="/savelist/" className="navbar-item ">
+                        Wishlist
+                      </Link>
+
+                    </div >
+                  </div>
                   <Link to="/" className="navbar-item " onClick={logout}>
                     Logout
                   </Link>
-                  {auth.user.id === 1 && <Link to="/reviews/addreview" className="navbar-item is-large">
-                    Add Review
-                  </Link>}
+
                 </>
 
               ) : (
@@ -83,8 +99,8 @@ function Nav() {
           </div>
         </nav>
       </div>
-      
-    
+
+
     </>
   )
 }
