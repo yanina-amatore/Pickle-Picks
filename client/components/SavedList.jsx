@@ -38,9 +38,16 @@ function ReviewList() {
       <Link to="/reviewlist" className="button is-small is-link ml-3 "><i className="fa-solid fa-arrow-left mr-2"></i>Back to List</Link>
          <h2 className="is-size-4 is-bold p-3">My Saved Reviews Page</h2>
          <div className='is-flex is-justify-content-space-evenly is-flex-wrap-wrap  my-3 p-3 ' >
-          {reviewsStore?.map((review, idx) => {
+
+        {/* // Problem is I'm in a loop. I need to check the wishlist condition and then render the tiles. */}
+
+        {reviewsStore?.map((review, idx) => {
           const id = review.id          
-          if (wishlistStore.includes(id)){            
+          if (wishlistStore.length === 0){
+          return ( 
+            <p className="title"> Your Wishlist is empty</p>
+          )
+          } else if(wishlistStore.includes(id)){            
             return (            
               <Link to={`/review/${id}`} data={review} key={idx}>
                 <div className='box is-two-fifths   p-3 '>
@@ -58,7 +65,7 @@ function ReviewList() {
                       className='button is-danger is-outlined my-5'
                       onClick={() => {
                         dispatch(fetchDelSaved(userId, id));
-                        // navigate("/savelist/")                         
+                        navigate("/savelist/")                         
                       }}
                         >
                       <i className="fa-regular fa-trash-can mr-2"></i>

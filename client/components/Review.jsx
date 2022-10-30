@@ -43,11 +43,11 @@ function Review() {
   }
 
   //  Delete btn func
-  const handleDelete = () => {
-    dispatch(fetchDelSaved(userId, id))
-    navigate("/savelist/")
+  // const handleDelete = () => {
+  //   dispatch(fetchDelSaved(userId, id))
+  //   navigate("/savelist/")
 
-  }
+  // }
 
 
   return (
@@ -75,7 +75,7 @@ function Review() {
                       Add to my Wishlist
                     </button>
                   )}
-                  {store.auth.user != null && (
+                  {/* {store.auth.user != null && (
 
                     <button
                       className='button is-danger is-outlined my-5'
@@ -84,7 +84,7 @@ function Review() {
                       Remove from Wishlist
                     </button>
 
-                  )}
+                  )} */}
                 </div>
 
 
