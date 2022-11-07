@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { addReviewToWishlist, fetchDelSaved, fetchSavedReviews } from '../actions/review'
@@ -13,47 +13,60 @@ function Review() {
   const reviewsStore = store.reviews
   const wishlistStore = store.saved
   
+  console.log('wishlistStore', wishlistStore)
+  
+  
+  // const [isSaveActive, setIsSaveActive] = useState(false)
+  
   let { id } = useParams()
-  const userId = store.auth.user.id
+  console.log('id from params: ', id)
 
   useEffect(() => {
     dispatch(fetchSavedReviews(store.auth.user.id))
+    
   }, [])
 
-  
-  
-  const inWishlist= wishlistStore.includes(id)
-  
-  console.log('wishlistStore', wishlistStore)
-  console.log('inWishlist', inWishlist )
+  // I want to consitionally render buttons add or delete from wishlist depending if the id is already store on WishlistStore or not.
+
+  // I want to avoid the user saving the id in the wishlist more than once
+
+  // function checkID(x){         
+  //   if(wishlistStore?.includes(x)){
+  //     console.log(  'true')
+  //   }
+  //   else{
+  //     console.log( 'false')
+  //   }       
+  // }
+  const userId = store.auth.user.id
 
   const { location, rating, date, text } = reviewsStore.find(
-    (element) => element.id == id
-    )
+    (element) => element.id == id )
 
+  
 
   // TODO: create upload img to database and make API call to display 
   // To select a random pic from Public folder
 
   const imgNum = Math.floor(Math.random() * (12 - 1) + 1)
   const NewImage = `../images/${imgNum}.jpg`
- 
+
   // ----------------------------------------------------------------
-     
-  const saveToWishlist = () => {
-    dispatch(addReviewToWishlist(userId, id))
-    alert('Review added to Wishlist')
-    navigate("/savelist/")
+
+  const saveToWishlist = () => {       
+      dispatch(addReviewToWishlist(userId, id))
+      alert('Review added to Wishlist')
+      navigate("/savelist/")   
+    
   }
 
   //  Delete btn func
-  const handleDelete =  () => {
-    dispatch(fetchDelSaved(userId, id))
-    navigate("/savelist/")
+  // const handleDelete = () => {
+  //   dispatch(fetchDelSaved(userId, id))
+  //   navigate("/savelist/")
+  // }
 
-  }
-   
-
+ 
   return (
     <>
       <section className='section review-wrapper'>
@@ -69,42 +82,34 @@ function Review() {
               <p className='is-size-5 pb-2'> <b><i className="fa-solid fa-dog mr-2"></i>Rating: {rating}</b></p>
               <p className='is-size-6 is-italic pb-2'> Date: {date} </p>
               <p className='is-size-6 pb-2'> {text} </p>
-              <div className='buttons'>               
-                
-                  <div className='auth-buttons'>
-                  
-                  { wishlistStore?.includes(id)?(  
-                    <>
-                     <button 
+              <div className='buttons'>
+                <div className='auth-buttons'>
+                <div>
+                    <button
+                      className= 'button is-danger is-outlined my-5'                    
+                      onClick={saveToWishlist}>
+                      <i className="fa-solid fa-heart mr-2"></i>
+                      Add to my Wishlist
+                    </button>
+                 
+                    {/* <button
                       className='button is-danger is-outlined my-5'
                       onClick={handleDelete}>
                       <i className="fa-regular fa-trash-can mr-2"></i>
                       Remove from Wishlist
-                      </button>
-                    </>
-                    
-                  ) : (      
-                    <>                              
-                      <button
-                      className='button is-danger is-outlined my-5'
-                      onClick={saveToWishlist}>
-                      <i className="fa-solid fa-heart mr-2"></i>
-                        Add to my Wishlist
-                      </button>
-                    </>
-                  )}                  
+                    </button> */}
                   </div>
-                
-
-                <Link to="/reviewlist"
-                  className="button is-link is-outlined my-5 ">
-                  <i className="fa-solid fa-arrow-left mr-2"></i>
-                  Back to Reviews </Link>
+                              
               </div>
+              <Link to="/reviewlist"
+                className="button is-link is-outlined my-5 ">
+                <i className="fa-solid fa-arrow-left mr-2"></i>
+                Back to Reviews </Link>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
     </>
   )
 }

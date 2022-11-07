@@ -66,44 +66,45 @@ function Review() {
               <p className='is-size-6 is-italic pb-2'> Date: {date} </p>
               <p className='is-size-6 pb-2'> {text} </p>
               <div className='buttons'>
-
-                <div className='auth-buttons'>
-
-                  {wishlistStore?.map((x, idx) => {
-
-                    if (x === id) {
-                      return (
-                        <button
-                          className='button is-danger is-outlined my-5'
-                          onClick={handleDelete}
-                          key={idx}>
-                          <i className="fa-regular fa-trash-can mr-2"></i>
-                          Remove from Wishlist
-                        </button>
-                      )
-                    } else {
-                      return (
-                        <button
-                          className='button is-danger is-outlined my-5'
-                          onClick={saveToWishlist}
-                          key={idx}>
-                          <i className="fa-solid fa-heart mr-2"></i>
-                          Add to my Wishlist
-                        </button>
-                      )                             
+                <div className='buttons'>
+                  <div className='auth-buttons'>
+                    {wishlistStore?.map((x) => {
+                      console.log('x: ', x)
+                      if (x === id) {
+                        return (
+                          <>
+                            <button
+                              className='button is-danger is-outlined my-5'
+                              onClick={handleDelete}>
+                              <i className="fa-regular fa-trash-can mr-2"></i>
+                              Remove from Wishlist
+                            </button>
+                          </>
+                        )
+                      } else {
+                        return (
+                          <>
+                            <button
+                              className='button is-danger is-outlined my-5'
+                              onClick={saveToWishlist}>
+                              <i className="fa-solid fa-heart mr-2"></i>
+                              Add to my Wishlist
+                            </button>
+                          </>
+                        )
                       }
-                  })}
+                    })
+                    }
+                  </div>
+                  <Link to="/reviewlist"
+                    className="button is-link is-outlined my-5 ">
+                    <i className="fa-solid fa-arrow-left mr-2"></i>
+                    Back to Reviews </Link>
                 </div>
-
-
-                <Link to="/reviewlist"
-                  className="button is-link is-outlined my-5 ">
-                  <i className="fa-solid fa-arrow-left mr-2"></i>
-                  Back to Reviews </Link>
               </div>
             </div>
           </div>
-        </div>
+          </div>
       </section>
     </>
   )

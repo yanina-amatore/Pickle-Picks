@@ -19,7 +19,7 @@ function Home() {
               <Link to="/reviewlist" className="button is-link "><i className="fa-solid fa-list-ul mr-2"></i>Reviews List</Link>
               
               {/* User only */}
-              {state.auth.user != null && <Link to="/savelist" className="button is-link "><i className="fa-regular fa-heart mr-2"></i>My Wishlist</Link>}
+              {state.auth.user != null && <Link to="/savelist" className="button is-danger "><i className="fa-regular fa-heart mr-2"></i>My Wishlist</Link>}
             </div>      
           </div>
           
