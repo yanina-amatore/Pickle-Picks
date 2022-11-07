@@ -1,5 +1,11 @@
 # Pickle's Picks
 
+## About the project
+
+This was initially a Bootcamp project that I started with some friends but still needed to finish. I've refactored some initial code, added a delete review feature, improved website navigability and styled it using Bulma.
+It's still buggy, and I am working on adding images to the database and conditionally rendering some buttons.
+Hope you enjoy it.
+
 ## Setup
 
 Run the following commands in your terminal:
