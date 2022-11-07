@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams, useNavigate, Link } from 'react-router-dom'
-import { addReviewToWishlist, fetchDelSaved, fetchSavedReviews } from '../actions/review'
+import { addReviewToWishlist, fetchSavedReviews } from '../actions/review'
 
 
 function Review() {
@@ -12,38 +12,22 @@ function Review() {
   const store = useSelector((store) => store)
   const reviewsStore = store.reviews
   const wishlistStore = store.saved
-  
-  console.log('wishlistStore', wishlistStore)
-  
-  
-  // const [isSaveActive, setIsSaveActive] = useState(false)
-  
+
+
   let { id } = useParams()
   console.log('id from params: ', id)
 
   useEffect(() => {
     dispatch(fetchSavedReviews(store.auth.user.id))
-    
+
   }, [])
 
-  // I want to consitionally render buttons add or delete from wishlist depending if the id is already store on WishlistStore or not.
-
-  // I want to avoid the user saving the id in the wishlist more than once
-
-  // function checkID(x){         
-  //   if(wishlistStore?.includes(x)){
-  //     console.log(  'true')
-  //   }
-  //   else{
-  //     console.log( 'false')
-  //   }       
-  // }
   const userId = store.auth.user.id
 
   const { location, rating, date, text } = reviewsStore.find(
-    (element) => element.id == id )
+    (element) => element.id == id)
 
-  
+
 
   // TODO: create upload img to database and make API call to display 
   // To select a random pic from Public folder
@@ -53,19 +37,13 @@ function Review() {
 
   // ----------------------------------------------------------------
 
-  const saveToWishlist = () => {       
+
+  const saveToWishlist = () => {   
       dispatch(addReviewToWishlist(userId, id))
       alert('Review added to Wishlist')
-      navigate("/savelist/")   
-    
+      navigate("/savelist/")
+   
   }
-
-  //  Delete btn func
-  // const handleDelete = () => {
-  //   dispatch(fetchDelSaved(userId, id))
-  //   navigate("/savelist/")
-  // }
-
  
   return (
     <>
@@ -84,32 +62,37 @@ function Review() {
               <p className='is-size-6 pb-2'> {text} </p>
               <div className='buttons'>
                 <div className='auth-buttons'>
-                <div>
-                    <button
-                      className= 'button is-danger is-outlined my-5'                    
-                      onClick={saveToWishlist}>
-                      <i className="fa-solid fa-heart mr-2"></i>
-                      Add to my Wishlist
-                    </button>
-                 
-                    {/* <button
-                      className='button is-danger is-outlined my-5'
-                      onClick={handleDelete}>
-                      <i className="fa-regular fa-trash-can mr-2"></i>
-                      Remove from Wishlist
-                    </button> */}
-                  </div>
-                              
+                  {!wishlistStore.includes(Number(id)) ?
+                    <>
+                      <button
+                        className='button is-danger is-outlined my-5'
+                        onClick={saveToWishlist}>
+                        <i className="fa-solid fa-heart mr-2"></i>
+                        Add to my Wishlist
+                      </button>
+                    </>
+                    :
+                    <>
+                      <button
+                        className='button is-danger is-outlined my-5'
+                        onClick={saveToWishlist}
+                        title='Disabled button' disabled >
+                        <i className="fa-solid fa-heart mr-2"></i>
+                        Add to my Wishlist
+                      </button>
+                    </>
+
+                  }
+                </div>
+                <Link to="/reviewlist"
+                  className="button is-link is-outlined my-5 ">
+                  <i className="fa-solid fa-arrow-left mr-2"></i>
+                  Back to Reviews </Link>
               </div>
-              <Link to="/reviewlist"
-                className="button is-link is-outlined my-5 ">
-                <i className="fa-solid fa-arrow-left mr-2"></i>
-                Back to Reviews </Link>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
     </>
   )
 }
