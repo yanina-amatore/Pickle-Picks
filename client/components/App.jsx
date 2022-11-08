@@ -21,7 +21,7 @@ function App() {
   const auth = useSelector((redux) => redux.auth)
   const reviews = useSelector((state) => state.reviews)
   const state = useSelector((redux) => redux)
-
+ 
 
   useEffect(() => {
     const confirmSuccess = () => { }
@@ -44,7 +44,7 @@ function App() {
       <div className="">
         <Routes>
           <Route path="/" element={<Home />} />
-          {auth.user?.id === 1 && (
+          {auth.user?.username === 'pickle' && ( 
             <Route path="/reviews/addreview" element={<AddReviewForm />} />
           )}
           <Route path="/login" element={<Login />} />

@@ -1,13 +1,21 @@
 import { useSelector } from "react-redux";
 import React, {useState} from "react";
+import { useNavigate } from 'react-router-dom'
+
+
+
 
 import { postNewReviewApi } from "../apis/review";
 
 
 
 function AddReviewForm(){
+
+  const navigate = useNavigate()
+
   const state = useSelector((redux)=> redux)
-  const id = state.auth.user?.id
+  const admin = state.auth.user.username
+  console.log(admin, 'admin')
   const today = new Date()
   const [review, setReview] = useState({
     location:'',
@@ -29,8 +37,10 @@ function AddReviewForm(){
   const handleSubmbit = (evt) => {
     evt.preventDefault()
     setThankSwitch(true)
-    if (id === 1) {
+    if (admin === 'pickle') {
       postNewReviewApi(review)
+      navigate('/reviewlist')
+
     } 
     else { console.log('you are not authorized') }
     
