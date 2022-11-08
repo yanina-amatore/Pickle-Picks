@@ -15,7 +15,7 @@ function Review() {
 
 
   let { id } = useParams()
-  console.log('id from params: ', id)
+  
 
   useEffect(() => {
     dispatch(fetchSavedReviews(store.auth.user.id))

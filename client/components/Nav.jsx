@@ -9,6 +9,8 @@ function Nav() {
   const dispatch = useDispatch()
   const auth = useSelector((redux) => redux.auth)
 
+  console.log('user', auth.user)
+
   const [burgerVisible, setBurgerVisible] = useState(false)
 
   const toggleBurger = () => {
@@ -55,7 +57,7 @@ function Nav() {
               {auth.isAuthenticated ? (
                 <>
                   
-                  {auth.user.id === 1 && <Link to="/reviews/addreview" className="navbar-item is-large">
+                  {auth.user.username === 'pickle' && <Link to="/reviews/addreview" className="navbar-item is-large">
                     Add Review
                   </Link>
                   }
