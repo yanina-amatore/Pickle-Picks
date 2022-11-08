@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams, useNavigate, Link } from 'react-router-dom'
-import { addReviewToWishlist, fetchSavedReviews } from '../actions/review'
+import { addReviewToWishlist, fetchSavedReviews, fetchDelSaved } from '../actions/review'
 
 
 function Review() {
@@ -37,14 +37,20 @@ function Review() {
 
   // ----------------------------------------------------------------
 
+  // Add to Wishlist
+  const saveToWishlist = () => {
+    dispatch(addReviewToWishlist(userId, id))
+    alert('Review added to Wishlist')
+    navigate("/savelist/")
 
-  const saveToWishlist = () => {   
-      dispatch(addReviewToWishlist(userId, id))
-      alert('Review added to Wishlist')
-      navigate("/savelist/")
-   
   }
- 
+  //  Delete from Wishlist
+  const handleDelete = () => {
+    dispatch(fetchDelSaved(userId, id))
+    navigate("/savelist/")
+  }
+
+
   return (
     <>
       <section className='section review-wrapper'>
@@ -61,11 +67,11 @@ function Review() {
               <p className='is-size-6 is-italic pb-2'> Date: {date} </p>
               <p className='is-size-6 pb-2'> {text} </p>
               <div className='buttons'>
-                <div className='auth-buttons'>
-                  {!wishlistStore.includes(Number(id)) ?
+              
+                  {!wishlistStore?.includes(Number(id)) ?
                     <>
                       <button
-                        className='button is-danger is-outlined my-5'
+                        className='button is-danger is-outlined my-5 mr-2'
                         onClick={saveToWishlist}>
                         <i className="fa-solid fa-heart mr-2"></i>
                         Add to my Wishlist
@@ -74,16 +80,14 @@ function Review() {
                     :
                     <>
                       <button
-                        className='button is-danger is-outlined my-5'
-                        onClick={saveToWishlist}
-                        title='Disabled button' disabled >
-                        <i className="fa-solid fa-heart mr-2"></i>
-                        Add to my Wishlist
-                      </button>
+                      className='button is-danger is-outlined my-5'
+                      onClick={handleDelete}                    >
+                      <i className="fa-regular fa-trash-can mx-2"></i>
+                      Remove from Wishlist
+                    </button>
                     </>
-
                   }
-                </div>
+                
                 <Link to="/reviewlist"
                   className="button is-link is-outlined my-5 ">
                   <i className="fa-solid fa-arrow-left mr-2"></i>
@@ -93,6 +97,7 @@ function Review() {
           </div>
         </div>
       </section>
+     
     </>
   )
 }
