@@ -7,9 +7,8 @@ function getReviews(db = connection) {
 }
 
 // Save review to Wishlist
-function postReview(data, db = connection) {
-  
- // inserts  user_id: userId, review_id: reviewId
+function postToWishlist(data, db = connection) {   
+   // inserts  user_id: userId, review_id: reviewId
   return db('saved_reviews')
   .insert(data)
 }
@@ -41,7 +40,7 @@ function addReview(reviewObj, db = connection) {
 module.exports = {
    getReviews, 
    getSavedReviews, 
-   postReview,
+   postToWishlist,
    deleteSaved, 
    addReview, 
   }
