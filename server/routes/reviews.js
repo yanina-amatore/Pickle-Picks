@@ -5,6 +5,7 @@ const db = require('../db/reviews')
 router.get('/', (req, res) => {
   db.getReviews()
     .then((reviews) => {
+      
       res.json(reviews)
     })
     .catch((err) => {
@@ -18,11 +19,13 @@ router.post('/saved/:userId', (req, res) => {
   const reviewId = req.body.reviewId
   
   const data = { user_id: userId, review_id: reviewId }
-  
-  db.postReview(data)
-    .then(() => {
-      res.sendStatus(201)
-      // 201 success status 
+    
+  db.postToWishlist(data)
+    .then((resp) => {
+      // res is the ID of the review_id added
+      res.json(resp)
+      // console.log('res',typeof res, res)
+      
     })
     .catch((err) => {
       console.log('Error in Server:' + err.message)
@@ -49,7 +52,7 @@ router.delete('/saved/:userId', async (req, res) => {
 
   try {
    await db.deleteSaved(user_id, review_id)
-      res.json(data).sendStatus(201)
+      res.json(data)
  
     // 201 success status 
   } catch {

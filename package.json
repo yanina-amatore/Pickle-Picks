@@ -12,7 +12,7 @@
     "webpack": "webpack --config ./client/webpack.config.js",
     "knex": "knex --knexfile ./server/db/knexfile.js",
     "lint": "eslint --ext .js,.jsx .",
-    "test": "jest",
+    "test": "jest --watchAll",
     "test:watch": "jest --noStackTrace --watchAll",
     "build": "run-p build:client build:server",
     "build:client": "npm run webpack -- --mode production",
@@ -21,6 +21,7 @@
     "h:migrate": "heroku run npm run knex migrate:latest",
     "h:rollback": "heroku run npm run knex migrate:rollback",
     "h:seed": "heroku run npm run knex seed:run"
+    
   },
   "keywords": [
     "fullstack"
@@ -40,11 +41,7 @@
       "bundle.js"
     ]
   },
-  "jest": {
-    "setupFiles": [
-      "./tests/setup-dotenv.js"
-    ]
-  },
+
   "devDependencies": {
     "@babel/core": "^7.15.6",
     "@babel/plugin-proposal-class-properties": "^7.14.5",
@@ -88,6 +85,7 @@
   },
   "dependencies": {
     "dotenv": "^10.0.0",
+    "dotenv-webpack": "^8.0.1",
     "express": "^4.17.2",
     "knex": "^2.1.0",
     "lodash": "^4.17.21",
@@ -100,6 +98,9 @@
   "prettier": {
     "semi": false,
     "singleQuote": true
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
   },
   "browserslist": "> 2%, not dead"
 }

@@ -8,7 +8,7 @@ exports.seed = async function (knex) {
   await knex('reviews').insert([
     {
       id: 1,
-      location: "Fidel's",
+      location: "Fidels",
       title: 'Lovely Communist Vibes',
       text: "I went to fidel's. I love that place! It was so much fun and the staff were so nice. I will definitely go again. Viva la revolucion!",
       rating: 2,
