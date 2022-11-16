@@ -1,10 +1,15 @@
 # Pickle's Picks
 
-## About the project
+## About the projectrefreshing
+
+Updates : ATM i'm working on unit tests. I'm a little out of practice so this is a great way of doing a refresher :)
 
 This was initially a Bootcamp project that I started with some friends but still needed to finish. I've refactored some initial code, added a delete review feature, improved website navigability and styled it using Bulma.
 It's still buggy, and I am working on adding images to the database and conditionally rendering some buttons.
-Hope you enjoy it.
+
+I couldn't deploy it yet but If you want to check it out you can ask me for the JWT secret code in linkedIn at https://www.linkedin.com/in/yanina-amatore/  and I'll share it with you.
+
+
 
 ## Setup
 
@@ -14,8 +19,9 @@ Run the following commands in your terminal:
 npm install
 npm run knex migrate:latest
 npm run knex seed:run
-cp .env.example .env
+
 ```
+
 
 To run in development:
 ```sh
