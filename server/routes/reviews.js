@@ -23,8 +23,9 @@ router.post('/saved/:userId', (req, res) => {
   db.postToWishlist(data)
     .then((resp) => {
       // res is the ID of the review_id added
+      // console.log('res',typeof res, res.body) : 'res object undefined'
+      console.log('res', resp)
       res.json(resp)
-      // console.log('res',typeof res, res)
       
     })
     .catch((err) => {
@@ -37,6 +38,7 @@ router.get('/saved/:userId', (req, res) => {
   const userId = req.params.userId
   db.getSavedReviews(userId)
     .then((reviews) => {
+      // console.log('reviews', reviews)
       res.json(reviews)
     })
     .catch((err) => {
@@ -63,6 +65,7 @@ router.delete('/saved/:userId', async (req, res) => {
 // Admin post a new review
 router.post('/addreview', (req, res)=> {
   const review =req.body
+
  
   db.addReview(review)
     .then((thing)=>res.json(thing))
