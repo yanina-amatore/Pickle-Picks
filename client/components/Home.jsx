@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 function Home() {
   const state = useSelector((redux) => redux)
-  // console.log(state.auth.user, 'auth')
+ 
 
 
   return (

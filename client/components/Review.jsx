@@ -15,18 +15,19 @@ function Review() {
 
 
   let { id } = useParams()
-  
 
-  useEffect(() => {
-    dispatch(fetchSavedReviews(store.auth.user.id))
+  // const userId = store?.auth.user.id 
 
-  }, [])
-
-  const userId = store.auth.user.id
 
   const { location, rating, date, text } = reviewsStore.find(
     (element) => element.id == id)
 
+  store.auth.user != null && (
+    useEffect(() => {
+      dispatch(fetchSavedReviews(store?.auth.user.id))
+
+    }, [])
+  )
 
 
   // TODO: create upload img to database and make API call to display 
@@ -39,14 +40,14 @@ function Review() {
 
   // Add to Wishlist
   const saveToWishlist = () => {
-    dispatch(addReviewToWishlist(userId, id))
+    dispatch(addReviewToWishlist(store?.auth.user.id, id))
     alert('Review added to Wishlist')
     navigate("/savelist/")
 
   }
   //  Delete from Wishlist
   const handleDelete = () => {
-    dispatch(fetchDelSaved(userId, id))
+    dispatch(fetchDelSaved(store?.auth.user.id, id))
     navigate("/savelist/")
   }
 
@@ -66,8 +67,8 @@ function Review() {
               <p className='is-size-5 pb-2'> <b><i className="fa-solid fa-dog mr-2"></i>Rating: {rating}</b></p>
               <p className='is-size-6 is-italic pb-2'> Date: {date} </p>
               <p className='is-size-6 pb-2'> {text} </p>
-              <div className='buttons'>
-              
+              {store.auth.user != null && (
+                <div className='buttons'>
                   {!wishlistStore?.includes(Number(id)) ?
                     <>
                       <button
@@ -80,24 +81,24 @@ function Review() {
                     :
                     <>
                       <button
-                      className='button is-danger is-outlined my-5'
-                      onClick={handleDelete}                    >
-                      <i className="fa-regular fa-trash-can mx-2"></i>
-                      Remove from Wishlist
-                    </button>
+                        className='button is-danger is-outlined my-5'
+                        onClick={handleDelete}                    >
+                        <i className="fa-regular fa-trash-can mx-2"></i>
+                        Remove from Wishlist
+                      </button>
                     </>
                   }
-                
-                <Link to="/reviewlist"
-                  className="button is-link is-outlined my-5 ">
-                  <i className="fa-solid fa-arrow-left mr-2"></i>
-                  Back to Reviews </Link>
-              </div>
+                </div>
+              )}
+              <Link to="/reviewlist"
+                className="button is-link is-outlined my-5 ">
+                <i className="fa-solid fa-arrow-left mr-2"></i>
+                Back to Reviews </Link>
             </div>
           </div>
         </div>
       </section>
-     
+
     </>
   )
 }

@@ -9,8 +9,7 @@ function Nav() {
   const dispatch = useDispatch()
   const auth = useSelector((redux) => redux.auth)
 
-  console.log('user', auth.user)
-
+  
   const [burgerVisible, setBurgerVisible] = useState(false)
 
   const toggleBurger = () => {
