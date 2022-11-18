@@ -21,10 +21,7 @@ function Review() {
     dispatch(fetchSavedReviews(store.auth.user.id))
   }, [])
 
-  // const checkStore = wishlistStore?.includes(id)
-  console.log('wishlistStoreIncludes?', wishlistStore)
-
-  const { location, rating, date, text } = reviewsStore.find(
+    const { location, rating, date, text } = reviewsStore.find(
     (element) => element.id == id
   )
 

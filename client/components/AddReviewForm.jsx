@@ -15,7 +15,6 @@ function AddReviewForm(){
 
   const state = useSelector((redux)=> redux)
   const admin = state.auth.user.username
-  console.log(admin, 'admin')
   const today = new Date()
   const [review, setReview] = useState({
     location:'',
