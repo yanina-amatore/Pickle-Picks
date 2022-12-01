@@ -1,6 +1,6 @@
 # Pickle's Picks
 
-## About the projectrefreshing
+## About the project
 
 Updates : ATM i'm working on unit tests. I'm a little out of practice so this is a great way of doing a refresher :)
 
