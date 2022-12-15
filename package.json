@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node server",
     "build": "run-p build:client build:server",
-    "build:client": "npm run webpack -- --mode production",
+    "build:client": "npm run webpack --omit=dev",
     "build:server": "npm run knex -- migrate:latest",
     "webpack": "webpack --config ./client/webpack.config.js",
     "dev": "run-p dev:client dev:server",
