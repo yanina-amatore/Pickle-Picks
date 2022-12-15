@@ -1,9 +1,9 @@
-const path = require('path')npm install --include=dev
+const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
   mode: 'development',
-  entry: path.join(__dirname, 'index.js'),
+  entry: ['./client/index.js', './client/styles/index.scss'],
   output: {
     path: path.join(__dirname, '..', 'server', 'public'),
     filename: 'bundle.js',
