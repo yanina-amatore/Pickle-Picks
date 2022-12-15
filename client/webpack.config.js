@@ -4,10 +4,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 module.exports = {
   mode: 'development',
   entry: ['./client/index.js', './client/styles/index.scss'],
-  output: {
-    path: path.join(__dirname, '..', 'server', 'public'),
-    filename: 'bundle.js',
-  },
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'styles.css',
@@ -15,6 +11,10 @@ module.exports = {
       ignoreOrder: false, // Enable to remove warnings about conflicting order
     }),
   ],
+  output: {
+    path: path.join(__dirname, '..', 'server', 'public'),
+    filename: 'bundle.js',
+  },
   module: {
     rules: [
       {

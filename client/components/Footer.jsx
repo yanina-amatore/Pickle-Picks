@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+
 
 function Footer() {
   return (
@@ -7,10 +7,10 @@ function Footer() {
       <section className="hero is-small has-background-light">
         <div className="hero-body">
           <div className="content has-text-centered ">
-              <Link to="https://github.com/yanina-amatore/Pickle-Picks">
+              <a href="https://www.github.com/yanina-amatore/Pickle-Picks" target="blank">
                 <i className="fa-brands fa-github mr-2"></i> {' '}              
                Created by <b>Yanina Amatore</b> & Dev Academy Students             
-            </Link>
+            </a>
           </div>
         </div>
       </section>
