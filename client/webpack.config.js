@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('path')npm install --include=dev
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
